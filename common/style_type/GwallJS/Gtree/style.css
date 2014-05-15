@@ -1,0 +1,103 @@
+.Gtree a {
+	font-size: 12px;
+	padding: 0;
+	color: #333;
+	text-decoration: none;
+}
+
+.Gtree a:hover {
+	background-color: #A4E7FF;
+}
+
+.Gtree img {
+	border: 0;
+	vertical-align: middle;
+}
+.liin{
+	list-style-type:none;
+	background-color: #A3BDE3;
+	font-size: 12px;
+	cursor:hand;
+	text-align: left;
+	width: 70px;
+}
+.liout{
+	list-style-type:none;
+	font-size: 12px;
+	text-align: left;
+	width: 70px;
+}
+.liclass{
+	list-style-type:none;
+	font-size: 12px;
+	cursor:hand;
+	text-align: left;
+	width: 70px;
+}
+.Gtree li img{
+	border:0;
+	padding-right:10px;
+	cursor:hand;
+}
+.Gtree table{
+	font-size: 12px;
+	border: 0;
+}
+.Gtree input{
+	font-family: Arial;
+	font-size: 12px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #999999;
+	border-right-color: #999999;
+	border-bottom-color: #999999;
+	border-left-color: #999999;
+	background-color: #fffde4;
+}
+/*底部按钮*/
+.buttons{
+	BORDER-TOP-WIDTH: 0px;
+	FONT-WEIGHT: bold;
+	BORDER-LEFT-WIDTH: 0px;
+	FONT-SIZE: 12px;
+	BACKGROUND: url(images/search_but.gif);
+	BORDER-BOTTOM-WIDTH: 0px;
+	WIDTH: 50px;
+	CURSOR: pointer;
+	COLOR: #333;
+	HEIGHT: 22px;
+	BORDER-RIGHT-WIDTH: 0px
+}
+.button_over {
+	BORDER-TOP-WIDTH: 0px;
+	FONT-WEIGHT: bold;
+	BORDER-LEFT-WIDTH: 0px;
+	FONT-SIZE: 12px;
+	BACKGROUND: url(images/search_but.gif) no-repeat -50px 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	WIDTH: 50px;
+	CURSOR: pointer;
+	COLOR: #333;
+	HEIGHT: 22px;
+	BORDER-RIGHT-WIDTH: 0px
+}
+.button_out {
+	BORDER-TOP-WIDTH: 0px;
+	FONT-WEIGHT: bold;
+	BORDER-LEFT-WIDTH: 0px;
+	FONT-SIZE: 12px;
+	BACKGROUND: url(images/search_but.gif) no-repeat;
+	BORDER-BOTTOM-WIDTH: 0px;
+	WIDTH: 50px;
+	CURSOR: pointer;
+	COLOR: #333;
+	HEIGHT: 22px;
+	BORDER-RIGHT-WIDTH: 0px
+}
+

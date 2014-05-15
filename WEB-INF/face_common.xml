@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- 公用部分 -->
+	<!-- 供应商 -->
+	<managed-bean>
+		<managed-bean-name>suinCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.SuinCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 组织架构 -->
+	<managed-bean>
+		<managed-bean-name>orgaCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.OrgaCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 库位信息 -->
+	<managed-bean>
+		<managed-bean-name>wahoCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.WahoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+  <!-- SAP仓库地点信息 ly -->
+	<managed-bean>
+		<managed-bean-name>sAPWahoCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.SAPWahoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 物料信息 -->
+	<managed-bean>
+		<managed-bean-name>inveCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.InveCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 物料类别 -->
+	<managed-bean>
+		<managed-bean-name>invclassCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.InvclassCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 品牌信息 -->
+	<managed-bean>
+		<managed-bean-name>brandCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.BrandCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 客户信息 -->
+	<managed-bean>
+		<managed-bean-name>customerCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.CustomerCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 地区信息 -->
+	<managed-bean>
+		<managed-bean-name>geinCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.GeinCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 供应商分类信息 -->
+	<managed-bean>
+		<managed-bean-name>sutyCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.SutyCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 客户分类信息 -->
+	<managed-bean>
+		<managed-bean-name>cutyCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.CutyCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择出库订单 -->
+	<managed-bean>
+		<managed-bean-name>outOrderCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.OutOrderCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择调拨计划 -->
+	<managed-bean>
+		<managed-bean-name>tranCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.TranCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择用户 -->
+	<managed-bean>
+		<managed-bean-name>userCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.UserCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择装车计划 -->
+	<managed-bean>
+		<managed-bean-name>etrucPlanCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.EtrucPlanCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 库存信息 -->
+	<managed-bean>
+		<managed-bean-name>stinCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.StinCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择出库订单 -->
+	<managed-bean>
+		<managed-bean-name>orderSelectCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.OrderSelectCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+	<!-- 选择部门 -->
+	<managed-bean>
+		<managed-bean-name>deptCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.DeptCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择条码 -->
+	<managed-bean>
+		<managed-bean-name>barStockCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.BarStockCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 箱码 -->
+	<managed-bean>
+		<managed-bean-name>bacoCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.BacoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择尺码 -->
+	<managed-bean>
+		<managed-bean-name>sizeCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.SizeCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择颜色 -->
+	<managed-bean>
+		<managed-bean-name>coloCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.ColoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择工艺信息 -->
+	<managed-bean>
+		<managed-bean-name>crinCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.CrinCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择部位信息 -->
+	<managed-bean>
+		<managed-bean-name>dvptCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.DvptCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 选择部位信息 -->
+	<managed-bean>
+		<managed-bean-name>tsptCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.TechsizeDvptCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择色卡信息 -->
+	<managed-bean>
+		<managed-bean-name>conoCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.ConoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 选择采购计划单号 -->
+	<managed-bean>
+		<managed-bean-name>socoCOM</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.common.SocoCOM
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+</faces-config>
+

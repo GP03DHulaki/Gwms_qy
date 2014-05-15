@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- 出库订单 -->
+	<managed-bean>
+		<managed-bean-name>outOrderMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.OutOrderMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>outOrderBiz</property-name>
+			<value>#{outOrderBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	
+	<!-- 订单开票 -->
+	<managed-bean>
+		<managed-bean-name>outOrderInvoiceMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.stockout.OutOrderInvoiceMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 电商未出订单 -->
+	<managed-bean>
+		<managed-bean-name>eshopOrderMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.EshopOrderMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>eshopOrderBiz</property-name>
+			<value>#{eshopOrderBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 出库单 -->
+	<managed-bean>
+		<managed-bean-name>stockOutMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.StockOutMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>stockOutBiz</property-name>
+			<value>#{stockOutBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 装车调度(出库订单) -->
+	<managed-bean>
+		<managed-bean-name>entruckScheMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.EntruckScheMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>entruckScheBiz</property-name>
+			<value>#{entruckScheBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 装车调度(调拨计划) -->
+	<managed-bean>
+		<managed-bean-name>entrScheTrPlanMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.EntrScheTrPlanMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>entruckScheBiz</property-name>
+			<value>#{entruckScheBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 装车调度(采购退货计划) -->
+	<managed-bean>
+		<managed-bean-name>entrSchePbPlanMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.EntrSchePbPlanMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>entruckScheBiz</property-name>
+			<value>#{entruckScheBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 备车调度 -->
+	<managed-bean>
+		<managed-bean-name>carScheMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.CarScheMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>carScheBiz</property-name>
+			<value>#{carScheBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 备货任务 -->
+	<managed-bean>
+		<managed-bean-name>pickTaskMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PickTaskMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>pickTaskBiz</property-name>
+			<value>#{pickTaskBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 装车计划 -->
+	<managed-bean>
+		<managed-bean-name>entruckPlanMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.EntruckPlanMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>entruckPlanBiz</property-name>
+			<value>#{entruckPlanBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 装车单 -->
+	<managed-bean>
+		<managed-bean-name>truckOrderMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.TruckOrderMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>truckOrderBiz</property-name>
+			<value>#{truckOrderBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 备货调度 -->
+	<managed-bean>
+		<managed-bean-name>pickscheMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PickScheMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>entruckPlanBiz</property-name>
+			<value>#{entruckPlanBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 拣货下架 -->
+	<managed-bean>
+		<managed-bean-name>pickDownMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PickDownMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>pickDownBiz</property-name>
+			<value>#{pickDownBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 拣货下架 -->
+	<managed-bean>
+		<managed-bean-name>secsortMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.SecsortMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>secsortBiz</property-name>
+			<value>#{secsortBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 其他出库单 -->
+	<managed-bean>
+		<managed-bean-name>otherOutMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.OtherOutMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>otheroutbiz</property-name>
+			<value>#{otheroutbiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+		<!-- 其他出库计划 -->
+	<managed-bean>
+		<managed-bean-name>otherOutPlanMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.OtherOutPlanMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	
+	<!-- 打包 -->
+	<managed-bean>
+		<managed-bean-name>packagingMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PackagingMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>packagingBiz</property-name>
+			<value>#{packagingBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	
+	<!-- 出库复核 -->
+	<managed-bean>
+		<managed-bean-name>reviewLibraryMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.ReviewLibraryMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>reviewLibrayBiz</property-name>
+			<value>#{reviewLibrayBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+ <!-- 拆包 -->
+	<managed-bean>
+		<managed-bean-name>packOutMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PackOutMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>packOutBiz</property-name>
+			<value>#{packOutBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!--  分单池   -->
+	<managed-bean>
+		<managed-bean-name>billpoolMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.BillPoolMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>billpoolBiz</property-name>
+			<value>#{billpoolBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+</faces-config>
+

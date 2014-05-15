@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+	default-lazy-init="true">
+
+	<!-- ************************************************Biz业务处理层******************************************************* -->
+
+	<!-- 货主转换计划 -->
+	<bean id="owtranBiz"
+		class="com.gwall.biz.impl.stock.OwTranBizImpl">
+   <constructor-arg ref="owtrandao"></constructor-arg>
+	</bean>
+	
+	<!-- 调拨计划 -->
+	<bean id="tranPlanBiz"
+		class="com.gwall.biz.impl.stock.TranPlanBizImpl">
+		<constructor-arg ref="tranPlanDao"></constructor-arg>
+	</bean>
+	
+	<!-- 货主转换 -->
+	<bean id="changeowidbiz"
+		class="com.gwall.biz.impl.stock.ChangeOwidBizImpl">
+		<constructor-arg ref="changeowidDao"></constructor-arg>
+	</bean>
+
+	<!-- 调拨入库单 -->
+	<bean id="traninbiz"
+		class="com.gwall.biz.impl.stock.TraninBizImpl">
+		<constructor-arg ref="tranindao"></constructor-arg>
+	</bean>
+
+	<!-- 调拨出库单 -->
+	<bean id="tranOutBiz"
+		class="com.gwall.biz.impl.stock.TranOutBizImpl">
+		<constructor-arg ref="tranOutDao"></constructor-arg>
+	</bean>
+
+	<!-- 盘点计划单 -->
+	<bean id="stockPlanbiz"
+		class="com.gwall.biz.impl.stock.StockPlanBizImpl">
+		<constructor-arg ref="stockPlanDao"></constructor-arg>
+	</bean>
+	<!-- 盘点操作单biz -->
+	<bean id="stockOptbiz"
+		class="com.gwall.biz.impl.stock.StockOptBizImpl">
+		<constructor-arg ref="stockOptDao"></constructor-arg>
+	</bean>
+	<!-- 盘盈盘亏biz -->
+	<bean id="stockAdjustbiz"
+		class="com.gwall.biz.impl.stock.StockAdjustBizImpl">
+		<constructor-arg ref="stockAdjustdao"></constructor-arg>
+	</bean>
+
+	<!-- 移库Biz -->
+	<bean id="shiftlibraryBiz"
+		class="com.gwall.biz.impl.stock.ShiftLibraryBizImpl">
+		<constructor-arg ref="shiftlibratydao"></constructor-arg>
+	</bean>
+
+	<!-- 异常库存 -->
+	<bean id="abnormalstockBiz"
+		class="com.gwall.biz.impl.stock.AbnormalStockBizImpl">
+		<constructor-arg ref="abnormalstockDao"></constructor-arg>
+	</bean>
+
+	<!-- 变更电商条码记录单 -->
+	<bean id="changebacobiz"
+		class="com.gwall.biz.impl.stock.ChangeBacoBizImpl">
+		<constructor-arg ref="changebacodao"></constructor-arg>
+	</bean>
+
+	<!-- 理货上架Biz -->
+	<bean id="shelvBiz" class="com.gwall.biz.impl.stock.ShelvBizImpl">
+		<constructor-arg ref="shelvDao"></constructor-arg>
+	</bean>
+
+	<!-- 拼盘Biz -->
+	<bean id="packBoxBiz"
+		class="com.gwall.biz.impl.stock.PackBoxBizImpl">
+		<constructor-arg ref="packBoxDao"></constructor-arg>
+	</bean>
+
+	<!-- 初始化生成装箱使用的箱子码 和没有条码的物料条码 Biz-->
+	<bean id="printPackboxBiz"
+		class="com.gwall.biz.impl.stock.PrintPackBoxBizImpl">
+		<constructor-arg ref="printpackboxDao"></constructor-arg>
+	</bean>
+
+	<!-- 上架任务Biz -->
+	<bean id="shelvesTaskBiz"
+		class="com.gwall.biz.impl.stock.ShelvesTaskBizImpl">
+		<constructor-arg ref="shelvestaskDao"></constructor-arg>
+	</bean>
+	<!-- ************************************************Dao数据库交互层****************************************************** -->
+	<!-- 货主转换计划dao -->
+	<bean id="owtrandao"
+		class="com.gwall.dao.impl.stock.OwTranDaoImpl">
+	</bean>
+	<!-- 出库订单dao -->
+	<bean id="tranPlanDao"
+		class="com.gwall.dao.impl.stock.TranPlanDaoImpl">
+	</bean>
+
+	<!-- 调拨入库单dao -->
+	<bean id="tranindao"
+		class="com.gwall.dao.impl.stock.TraninDaoImpl">
+	</bean>
+
+	<!-- 调拨出库单dao -->
+	<bean id="tranOutDao"
+		class="com.gwall.dao.impl.stock.TranOutDaoImpl">
+	</bean>
+
+	<!-- 盘点计划dao -->
+	<bean id="stockPlanDao"
+		class="com.gwall.dao.impl.stock.StockPlanDaoImpl">
+	</bean>
+	<!-- 盘点操作dao -->
+	<bean id="stockOptDao"
+		class="com.gwall.dao.impl.stock.StockOptDaoImpl">
+	</bean>
+	<!-- 盘盈盘亏dao -->
+	<bean id="stockAdjustdao"
+		class="com.gwall.dao.impl.stock.StockAdjustDaoImpl">
+	</bean>
+	<!-- 移库Dao -->
+	<bean id="shiftlibratydao"
+		class="com.gwall.dao.impl.stock.ShiftLibraryDaoImpl">
+	</bean>
+
+	<!-- 异常调整dao -->
+	<bean id="abnormalstockDao"
+		class="com.gwall.dao.impl.stock.AbnormalStockDaoImpl">
+	</bean>
+
+
+	<!-- 变更电商条码记录单dao -->
+	<bean id="changebacodao"
+		class="com.gwall.dao.impl.stock.ChangeBacoDaoImpl">
+	</bean>
+
+	<!-- 理货上架dao -->
+	<bean id="shelvDao" class="com.gwall.dao.impl.stock.ShelvDaoImpl">
+	</bean>
+
+	<bean id="packBoxDao"
+		class="com.gwall.dao.impl.stock.PackBoxDaoImpl">
+	</bean>
+
+	<!-- 初始化生成装箱使用的箱子码 和没有条码的物料条码 Dao-->
+	<bean id="printpackboxDao"
+		class="com.gwall.dao.impl.stock.PrintPackBoxDaoImpl">
+	</bean>
+
+	<!-- 上架任务dao -->
+	<bean id="shelvestaskDao"
+		class="com.gwall.dao.impl.stock.ShelvesTaskDaoImpl">
+	</bean>
+	
+	<!-- 货主转换 -->
+	<bean id="changeowidDao"
+		class="com.gwall.dao.impl.stock.ChangeOwidDaoImpl">
+	</bean>
+</beans>

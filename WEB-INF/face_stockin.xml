@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+
+
+	<!-- ===============================================分割线=================================================== -->
+
+	<!-- 订单 -->
+	<managed-bean>
+		<managed-bean-name>pubmMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PubmMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>pubmbiz</property-name>
+			<value>#{pubmbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- ASN -->
+	<managed-bean>
+		<managed-bean-name>asnMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.AsnMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>asnbiz</property-name>
+			<value>#{asnbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 采购入库单 -->
+	<managed-bean>
+		<managed-bean-name>poinMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.PoinMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>poinbiz</property-name>
+			<value>#{poinbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 采购预约单 -->
+	<managed-bean>
+		<managed-bean-name>purchaseMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PurchaseMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>purchaseBiz</property-name>
+			<value>#{purchaseBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 采购到货 -->
+	<managed-bean>
+		<managed-bean-name>purchaseArrvicMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PurchaseArriveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>purchaseArrivebiz</property-name>
+			<value>#{purchaseArrivebiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 生产入库单 -->
+	<managed-bean>
+		<managed-bean-name>moinMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.MoinMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>moinbiz</property-name>
+			<value>#{moinbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 入库装箱 -->
+	<managed-bean>
+		<managed-bean-name>boxInMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.BoxInMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>boxinbiz</property-name>
+			<value>#{boxinbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 其它入库单 -->
+	<managed-bean>
+		<managed-bean-name>otherinMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.OtherinMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>otherinbiz</property-name>
+			<value>#{otherinbiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 质检任务单 -->
+	<managed-bean>
+		<managed-bean-name>checkTaskMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.CheckTaskMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>checkTaskDao</property-name>
+			<value>#{checkTaskDao}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 检验入库单 -->
+	<managed-bean>
+		<managed-bean-name>checkMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.CheckMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>checkbiz</property-name>
+			<value>#{checkbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 质检返修入库单 -->
+	<managed-bean>
+		<managed-bean-name>returncheckMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReturnCheckMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 生产计划单 -->
+	<managed-bean>
+		<managed-bean-name>moPlanMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.MoPlanMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>moplanbiz</property-name>
+			<value>#{moplanbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 变更电商条码记录单 -->
+	<managed-bean>
+		<managed-bean-name>changeBacoMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ChangeBacoMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>changebacobiz</property-name>
+			<value>#{changebacobiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 变更货主记录单 -->
+	<managed-bean>
+		<managed-bean-name>changeOwidMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ChangeOwidMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>changeowidbiz</property-name>
+			<value>#{changeowidbiz}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 理货上架 -->
+	<managed-bean>
+		<managed-bean-name>shelvMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.ShelvMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>shelvBiz</property-name>
+			<value>#{shelvBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 入库任务列表 -->
+	<managed-bean>
+		<managed-bean-name>inTaskMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.InTaskMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 到货通知单 -->
+	<managed-bean>
+		<managed-bean-name>noticeOfArriveMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.stockin.NoticeOfArriveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+</faces-config>
+

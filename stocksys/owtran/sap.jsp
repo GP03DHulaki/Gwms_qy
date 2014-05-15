@@ -1,0 +1,88 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../../include/include_imp.jsp" %>
+<%@page import="com.gwall.common.WahoCOM"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<script>
+			window.name='search';
+	    </script>
+		<base target="search" />
+		<title>sap库位信息</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<script type="text/javascript" src='tran.js'></script>
+	</head>
+
+	<%
+		WahoCOM ai = (WahoCOM) MBUtil.getManageBean("#{wahoCOM}");
+		if (request.getParameter("time") != null) {
+			ai.setId("");
+			ai.setNa("");
+			ai.setSql("");
+		}
+		if (request.getParameter("type") != null) {
+			ai.setType(request.getParameter("type"));
+		}
+		if (request.getParameter("retid") != null) {
+			ai.setRetid(request.getParameter("retid"));
+		}
+		if (request.getParameter("retname") != null) {
+			ai.setRetname(request.getParameter("retname"));
+		}
+		if (request.getParameter("reifib") != null) {
+			ai.setReifib(request.getParameter("reifib"));
+		}
+		if (request.getParameter("pwid") != null) {
+			ai.setPwid(request.getParameter("pwid"));
+		}
+	%>
+	<body id=mmain_body>
+		<div id=mmain>
+			<f:view>
+				<h:form id="edit">
+					<div id=mmain_opt>
+						<a4j:commandButton onmouseover="this.className='a4j_over1'"
+							onmouseout="this.className='a4j_buton1'" styleClass="a4j_but1"
+							id="sid" value="查询" type="button" action="#{wahoCOM.search}"
+							reRender="output" requestDelay="50" />
+						<a4j:commandButton type="button" value="重置" onclick="cleartext();"
+							onmouseover="this.className='a4j_over1'"
+							onmouseout="this.className='a4j_buton1'" styleClass="a4j_but1" />
+					</div>
+					<div id=mmain_cnd>
+						<h:outputText value="库位编码:">
+						</h:outputText>
+						<h:inputText id="id" styleClass="inputtextedit" size="15"
+							value="#{wahoCOM.id}" onkeypress="formsubmit(event);" />
+						<h:outputText value="库位名称:">
+						</h:outputText>
+						<h:inputText id="name" styleClass="inputtextedit" size="15"
+							value="#{wahoCOM.na}" onkeypress="formsubmit(event);" />
+					</div>
+					<div id=mmain_free>
+						<a4j:outputPanel id="output">
+							<g:GTable gid="gtable" gtype="grid" gversion="2" gsort="whid" gsortmethod="ASC"
+								gselectsql="SELECT whid,whna,ifib FROM waho WHERE 1=1 AND 
+									whfl='P' AND whty = '#{wahoCOM.type}' AND pwid like '#{wahoCOM.pwid}%'
+									#{wahoCOM.sql} "
+								gwidth="550" gpage="(pagesize = 20)" gdebug="false"
+								growclick="selectThis('gcolumn[whid]','gcolumn[whna]','gcolumn[ifib]','','')"
+								gcolumn="gcid = 0(headtext = 序号,name = rowid,width = 30,headtype = text,align = center,type = text,datatype=string);
+									gcid = whid(headtext = 库位编码,name = whid,width = 200,headtype = sort,align = left,type = text,datatype=string);
+									gcid = whna(headtext = 库位名称,name = whna,width = 220,headtype = sort,align = left,type = text,datatype=string);
+							" />
+						</a4j:outputPanel>
+					</div>
+					<div id="hiddenDiv" style="display: none;">
+						<h:inputHidden id="retid" value="#{wahoCOM.retid}" />
+						<h:inputHidden id="retname" value="#{wahoCOM.retname}" />
+						<h:inputHidden id="reifib" value="#{wahoCOM.reifib}" />
+					</div>
+				</h:form>
+			</f:view>
+		</div>
+	</body>
+</html>

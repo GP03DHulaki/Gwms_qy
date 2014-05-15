@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- 库存查询MB -->
+	<managed-bean>
+		<managed-bean-name>stockSearchMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockSearchMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 库存查询MB -->
+	<managed-bean>
+		<managed-bean-name>owinBainSearchMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.OwinBainSearchMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 库存汇总查询MB -->
+	<managed-bean>
+		<managed-bean-name>stockSearchTotalMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockSearchTotalMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 库存变动MB -->
+	<managed-bean>
+		<managed-bean-name>inSaleSaveSearchMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.InSaleSaveSearchMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 生产入库单统计MB -->
+	<managed-bean>
+		<managed-bean-name>moinReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.MoinReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 采购入库单统计MB -->
+	<managed-bean>
+		<managed-bean-name>poinReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PoinReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 调拨出入库单统计MB -->
+	<managed-bean>
+		<managed-bean-name>traninoutReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.TraninoutReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 调拨出入库单统计MB -->
+	<managed-bean>
+		<managed-bean-name>tranReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.TranReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 出库订单统计MB -->
+	<managed-bean>
+		<managed-bean-name>orderCountMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.OrderCountMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 盘点操作报表MB -->
+	<managed-bean>
+		<managed-bean-name>stockCountMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockCountMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 生产包装计划完成情况报表MB -->
+	<managed-bean>
+		<managed-bean-name>moplanReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.MoplanReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+
+
+	</managed-bean>
+
+
+
+	<!-- 生产包装计划完成情况报表MB -->
+	<managed-bean>
+		<managed-bean-name>sfcountMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SfCountMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 收发存明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>dailyReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.DailyReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 采购退货清单明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>purchaseReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PurchaseReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 销售退货清单明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>saleReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SaleReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 出库订单流转报表MB -->
+	<managed-bean>
+		<managed-bean-name>orderFlowMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.OrderFlowMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 备货框明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>basketDetailMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.BasketDetailMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 收发存汇总报表MB -->
+	<managed-bean>
+		<managed-bean-name>receptSummary</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReceptSummary
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 备货员拣货明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>pickerDetailMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PickerDetailMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 打包明细报表MB -->
+	<managed-bean>
+		<managed-bean-name>packageDetailMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PackageDetailMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 系统运营报表MB -->
+	<managed-bean>
+		<managed-bean-name>systemRunMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SystemRunMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 总任务界面MB -->
+	<managed-bean>
+		<managed-bean-name>totalTaskMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.TotalTaskMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 入库采集统计 -->
+	<managed-bean>
+		<managed-bean-name>inCollectMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.InCollectMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+	<!--  -->
+	<managed-bean>
+		<managed-bean-name>otherInReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.OtherInReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!--  -->
+	<managed-bean>
+		<managed-bean-name>packBoxReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.PackBoxReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 绩效 -->
+	<managed-bean>
+		<managed-bean-name>performanceMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.PerformanceMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 出库复核 -->
+	<managed-bean>
+		<managed-bean-name>oqcreportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.OqcReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 待补货订单列表 -->
+	<managed-bean>
+		<managed-bean-name>replenishOrderMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReplenishOrderMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 主动补货订单列表 -->
+	<managed-bean>
+		<managed-bean-name>InitreplenishOrderMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.InitreplenishOrderMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 上架统计统计报表 -->
+	<managed-bean>
+		<managed-bean-name>shelfReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.ShelfReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 检查订单重复报表 -->
+	<managed-bean>
+		<managed-bean-name>orderCheckMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.OrderCheckMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 购到货和质检单调整日志报表 -->
+	<managed-bean>
+		<managed-bean-name>pologReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.PologReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 取消待处理订单报表 -->
+	<managed-bean>
+		<managed-bean-name>orderCancelReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.OrderCancelReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- 借出还回报表 -->
+	<managed-bean>
+		<managed-bean-name>otherOutInReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.OtherOutInReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 盘点差异报表 -->
+	<managed-bean>
+		<managed-bean-name>stockPlanReportMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.StockPlanReportMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 订单发货统计报表 -->
+	<managed-bean>
+		<managed-bean-name>outOrderReportMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.report.OutOrderReportMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 仓库收发货明细报表 -->
+	<managed-bean>
+		<managed-bean-name>StockConsDetailMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.StockConsDetailMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 库存不足预警报表 
+	<managed-bean>
+		<managed-bean-name>StockLowWarningMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.StockLowWarningMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	-->
+	
+	<!-- 称重统计报表  -->
+	<managed-bean>
+		<managed-bean-name>weighMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.WeighMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
+	<!-- 待装车订单报表 -->
+	<managed-bean>
+		<managed-bean-name>waitLoadingMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.WaitLoadingMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
+	<!-- 系统订单对应报表 -->
+	<managed-bean>
+		<managed-bean-name>sysOrderMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.SysOrderMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 未完成发货订单统计报表 -->
+	<managed-bean>
+		<managed-bean-name>unfilledOrderMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.UnfilledOrderMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+		<!-- 已完成发货订单统计报表 -->
+	<managed-bean>
+		<managed-bean-name>finishOrderMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.report.FinishOrderMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+</faces-config>
+

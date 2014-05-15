@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	<application>
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+	</application>
+
+	<!-- 登录管理 -->
+	<managed-bean>
+		<managed-bean-name>LoginMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.LoginMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>ilbiz</property-name>
+			<value>#{ilbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 用户 -->
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>com.gwall.view.UserMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userbiz</property-name>
+			<value>#{userbiz}</value>
+		</managed-property>
+		<managed-property>
+			<description>注入用于查询用户设计组别列表</description>
+			<property-name>patClassBiz</property-name>
+			<value>#{patClassBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 权限配置-->
+	<managed-bean>
+		<managed-bean-name>RoleMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.RoleMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>rolebiz</property-name>
+			<value>#{rolebiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 系统参数  -->
+	<managed-bean>
+		<managed-bean-name>SysconfigMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SysconfigMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>sysconfigbiz</property-name>
+			<value>#{sysconfigbiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 接口服务设置  -->
+	<managed-bean>
+		<managed-bean-name>SysinterfaceMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SysinterfaceMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>sysinterfacebiz</property-name>
+			<value>#{sysinterfacebiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!--日志查询  -->
+	<managed-bean>
+		<managed-bean-name>logsMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.LogsMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>logsbiz</property-name>
+			<value>#{logsbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 单据规则设置  -->
+	<managed-bean>
+		<managed-bean-name>vouchersetMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.VouchersetMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>vouchersetbiz</property-name>
+			<value>#{vouchersetbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 组织架构  -->
+	<managed-bean>
+		<managed-bean-name>OrgaMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.OrgaMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>orgabiz</property-name>
+			<value>#{orgabiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 数据归档配置  -->
+	<managed-bean>
+		<managed-bean-name>archiveMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ArchiveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>archivebiz</property-name>
+			<value>#{archivebiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 下架策略  -->
+	<managed-bean>
+		<managed-bean-name>pickRuleMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PickRuleMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>pickRuleBiz</property-name>
+			<value>#{pickRuleBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 主界面管理  -->
+	<managed-bean>
+		<managed-bean-name>mainMB</managed-bean-name>
+		<managed-bean-class>com.gwall.sys.MainMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 数据权限  -->
+	<managed-bean>
+		<managed-bean-name>DatarightsMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.sys.DatarightsMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 模块配置  -->
+	<managed-bean>
+		<managed-bean-name>moduMB</managed-bean-name>
+		<managed-bean-class>com.gwall.sys.ModuMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 作业调度  -->
+	<managed-bean>
+		<managed-bean-name>jobsMB</managed-bean-name>
+		<managed-bean-class>com.gwall.sys.JobsMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 条码规则模板  -->
+	<managed-bean>
+		<managed-bean-name>barcoderuleMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.sys.BarcoderuleMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 工作流配置  -->
+	<managed-bean>
+		<managed-bean-name>workflowMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.sys.WorkflowMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- 帐套管理  -->
+	<managed-bean>
+		<managed-bean-name>accountMB</managed-bean-name>
+		<managed-bean-class>com.gwall.sys.AccountMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 未回写单据汇总  -->
+	<managed-bean>
+		<managed-bean-name>unwriteBackMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.sys.UnwriteBackMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>billpoolconfigMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.BillPoolConfigMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>billpoolconfigBiz</property-name>
+			<value>#{billpoolconfigBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+</faces-config>
+

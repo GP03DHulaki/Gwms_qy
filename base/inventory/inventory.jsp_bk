@@ -1,0 +1,540 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@page import="com.gwall.util.MBUtil"%>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="https://ajax4jsf.dev.java.net/ajax" prefix="a4j"%>
+<%@ taglib uri="/WEB-INF/GWallTag" prefix="g"%>
+<jsp:directive.page import="javax.faces.context.FacesContext" />
+<jsp:directive.page import="javax.faces.el.ValueBinding" />
+<%@page import="com.gwall.view.InventoryMB"%>
+
+<%
+
+	InventoryMB ai = (InventoryMB) MBUtil.getManageBean("#{InventoryMB}");
+	if (request.getParameter("isAll") != null) {
+		ai.initSK();
+	}
+%>
+<html>
+	<head>
+		<title>物料</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+
+		<link href="<%=request.getContextPath()%>/css/style.css"
+			rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath()%>/css/gtab.css"
+			rel="stylesheet" type="text/css" />
+		<link href="gtree.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="inventory.js"></script>
+		<script type="text/javascript" src="gtree.js"></script>
+		<script type="text/javascript"
+			src='<%=request.getContextPath()%>/js/Gwallwin.js'></script>
+		<script type="text/javascript"
+			src='<%=request.getContextPath()%>/js/Gbase.js'></script>
+		<script type="text/javascript"
+			src='<%=request.getContextPath()%>/js/Gtab.js'></script>
+	</head>
+	<f:view>
+		<body id=mmain_body>
+			<div id=mmain>
+				<h:form id="list">
+					<div id=mmain_opt>
+						<a4j:commandButton id="saveButton" value="新增" onclick="addDiv();"
+							onmouseover="this.className='a4j_over'"
+							onmouseout="this.className='a4j_buton'"
+							rendered="#{InventoryMB.ADD}" styleClass="a4j_but" tabindex="5" />
+						<a4j:commandButton id="delButton" value="删除" type="button"
+							action="#{InventoryMB.delete}"
+							onclick="if(!deleteAll(gtable2)){return false};"
+							reRender="outTable,msg" oncomplete="endDo();" requestDelay="50"
+							onmouseover="this.className='a4j_over'"
+							onmouseout="this.className='a4j_buton'" styleClass="a4j_but" />
+						<h:panelGroup id="sp">
+							<a4j:commandButton id="query" value="查询" action="#{InventoryMB.query}"
+								onclick="startDo();" oncomplete="Gwallwin.winShowmask('FALSE');"
+								onmouseover="this.className='search_over'"
+								onmouseout="this.className='search_buton'" styleClass="but"
+								reRender="outTable" />
+							<a4j:commandButton value="重置"
+								onmouseover="this.className='a4j_over'"
+								onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
+								onclick="clearData();" reRender="out_List" />
+							<a4j:commandButton onmouseover="this.className='a4j_over1'"
+								onmouseout="this.className='a4j_buton1'" styleClass="a4j_but1"
+								id="excel" value="导出EXCEL" type="button"
+								action="#{InventoryMB.exportmstinvExcel}" reRender="msg,outPutFileName"
+								onclick="excelstock_begin('gtable2');" oncomplete="excelstock_end();"
+								 requestDelay="50" rendered="false"/>	
+						</h:panelGroup>
+						<a4j:commandButton type="button" value="打印条码"
+							onmouseover="this.className='a4j_over1'"
+							onmouseout="this.className='a4j_buton1'"
+							action="#{InventoryMB.printCode}" rendered="true"
+							styleClass="a4j_but1"
+							onclick="if(!print()){return false};"
+							oncomplete="lookPrint();" reRender="renderArea,outTable"
+							requestDelay="1000" />
+					</div>
+					<div id=mmain_cnd>
+						物料编码:
+						<h:inputText id="sk_inco" value="#{InventoryMB.sk_obj.inco}"
+								styleClass="inputtextedit" />
+						物料名称:
+						<h:inputText id="sk_inna" value="#{InventoryMB.sk_obj.inna}"
+							styleClass="inputtextedit" />
+						花色:
+						<h:inputText id="sk_colo" value="#{InventoryMB.sk_obj.colo}"
+							styleClass="inputtextedit" />
+						物料规格:
+						<h:inputText id="sk_inst" value="#{InventoryMB.sk_obj.inst}"
+							styleClass="inputtextedit" />
+						<br>
+						物料类别:
+						<h:inputText id="sk_tyna" value="#{InventoryMB.sk_obj.tyna}"
+							styleClass="inputtextedit" />
+						<img id="tyna_img" style="cursor: hand"
+							src="../../images/find.gif" onclick="selectSK_Inty();" />
+						品牌/系统:
+						<h:inputText id="sk_brde" value="#{InventoryMB.sk_obj.brde}"
+							styleClass="inputtextedit" />
+						<img id="brde_img" style="cursor: hand"
+							src="../../images/find.gif" onclick="selectSK_Bran();" />
+					</div>
+					<h:panelGrid id="outTable">
+						<g:GTable gid="gtable2" gtype="grid" gversion="2" gsort="inco" gsortmethod="asc"
+							gselectsql="Select a.id,a.inco,a.inna,a.inba,a.inst,a.past,a.inun,a.inty,b.tyna,a.bran,c.brde,a.asco,a.cpfl,a.cpty,a.cpri,a.ceve,a.cecu,
+										a.volu,a.vole,a.vowi,a.vohe,a.grwe,a.newe,a.tawe,a.colo,a.inse,a.vers,a.inpa,a.oupa,a.baty,a.baru,
+										a.inpr,a.stat,a.rema 
+										from inve a left join prty b on a.inty = b.inty left join brin c on a.bran = c.bran 
+										Where   #{InventoryMB.searchKey}"
+							gpage="(pagesize = 200)" gdebug="false"
+							gcolumn="gcid = id(headtext = selall,name = selall,width = 30,headtype = checkbox,align = center,type = checkbox,datatype=string);
+						        gcid = 0(headtext = 行号,name = rowid,width = 30,headtype = sort,align = center,type = text,datatype=string);
+							    gcid = -1(headtext = 操作,value=编辑,name = opt,width = 40,headtype = sort,align = center,type = link,linktype = script,typevalue = javascript:Edit(gcolumn[1]),datatype=string);
+							    gcid = inco(headtext = 物料编码,name = inco,width = 120,headtype = sort,align = left,type = text,datatype=string);
+						     	gcid = asco(headtext = 辅助编码,name = asco,width = 90,headtype = sort,align = left,type = text,datatype=string);
+						     	gcid = inba(headtext = 国标码,name = inba,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						     	gcid = inna(headtext = 物料名称,name = inna,width = 170,headtype = sort,align = left,type = text,datatype=string);
+						     	gcid = colo(headtext = 花色,name = colo,width = 120,headtype = sort,align = left , type = text , datatype = string);
+						     	gcid = inst(headtext = 物料规格,name = inst,width = 90,headtype = sort,align = left,type = text,datatype=string);
+							    gcid = past(headtext = 包装规格,name = past,width = 90,headtype = sort,align = left,type = text,datatype=string);
+							    gcid = tyna(headtext = 物料类别,name = tyna,width = 90,headtype = sort,align = center , type = text, datatype = string);
+							    gcid = inpr(headtext = 物料属性 ,name = inpr,width = 60,headtype =sort , align = center , type = mask,typevalue={S:半成品/P:产品/M:物料} , datatype = string);
+							    gcid = brde(headtext = 品牌/系统,name = brde,width = 90,headtype = sort,align = center , type = text, datatype = string);
+							    gcid = vole(headtext = 长(cm),name = vole,width = 90,headtype = hidden,align = left,type = text,datatype=number,dataformat={0.00});
+						        gcid = vowi(headtext = 宽(cm),name = vowi,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = vohe(headtext = 高(cm),name = vohe,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+							    gcid = volu(headtext = 体积（m³）,name = volu,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+							    gcid = grwe(headtext = 毛重,name = grwe,width = 90,headtype = hidden,align = left,type = hidden,datatype=string);
+						        gcid = newe(headtext = 净重,name = newe,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = tawe(headtext = 皮重,name = tawe,width = 90,headtype = hidden,align = left,type = hidden,datatype=string);
+							    gcid = inun(headtext = 物料单位,name = inun,width = 90,headtype = hidden,align = left,type = hidden,datatype=string);
+						    	gcid = cpfl(headtext = 保质期控制 ,name = cpfl,width = 62,headtype = hidden , align = center , type = mask,typevalue={Y:是/N:否} , datatype = string);
+						    	gcid = cpty(headtext = 保质期类型 ,name = cpty,width = 62,headtype = hidden , align = center , type = mask,typevalue={H:时/D:天/W:周/M:月} , datatype = string);
+						     	gcid = cpri(headtext = 保质期,name = cpri,width = 90,headtype = hidden,align = center,type = text,datatype=string);
+							    gcid = ceve(headtext = 专属供应商,name = ceve,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = cecu(headtext = 专属客户,name = cecu,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = inse(headtext = 尺寸,name = inse,width = 90,headtype = hidden ,align = left, type =text, datatype= string ;
+						        gcid = vers(headtext = 版本,name = vers,width = 90,headtype =hidden,align=left,type=text,datatype=string;
+						        gcid = vole(headtext = 内包装数,names = vole,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = oupa(headtext = 外包装数,name = oupa,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						        gcid = baty(headtext = 类型 ,name = baty,width = 60,headtype = hidden , align = center , type = mask,typevalue={P:批次/S:序列} , datatype = string);
+							    gcid = baru(headtext = 条码方案 ,name = baru,width = 60,headtype = hidden , align = center , type = mask,typevalue={0:条码/1:批次规则方案} , datatype = string);
+						        gcid = stat(headtext = 状态 ,name = stat,width = 60,headtype = hidden , align = center , type = mask,typevalue={1:有效/0:注销} , datatype = string); 
+						        gcid = rema(headtext = 备注,name = rema,width = 90,headtype = hidden,align = left,type = text,datatype=string);
+						" />
+					</h:panelGrid>
+					<a4j:outputPanel id="renderArea">
+						<h:inputHidden id="sellist" value="#{InventoryMB.sellist}" />
+						<h:inputHidden id="outPutFileName" value="#{InventoryMB.outPutFileName}" />
+						<h:inputHidden id="filename" value="#{InventoryMB.fileName}" />
+						<h:inputHidden id="gsql" value="#{InventoryMB.gsql}" />
+						<h:inputHidden id="gcoldatatype" value="#{InventoryMB.gcoldatatype}" />
+						<h:inputHidden id="gcolheadtext" value="#{InventoryMB.gcolheadtext}" />
+	
+						<h:inputHidden id="msg" value="#{InventoryMB.msg}"></h:inputHidden>
+					</a4j:outputPanel>
+				</h:form>
+			</div>
+			<div id="tabContent2" class="hidetab_body">
+				<a4j:outputPanel id="tree">
+					<div id="treeInit" onselectstart="return false;"
+						style="white-space: nowrap; height =100%; overflow: auto;"></div>
+					<script type="text/javascript">GTree.init();</script>
+				</a4j:outputPanel>
+			</div>
+
+			<div id="edit" style="display: none">
+				<h:form id="edit">
+					<div id=mmain_hide>
+						<a4j:commandButton id="editbut" value="编辑" type="button"
+							action="#{InventoryMB.getInventory}" reRender="editpanel"
+							oncomplete="edit_show();" requestDelay="50" />
+						<h:inputHidden id="selid" value="#{InventoryMB.selid}" />
+						<h:inputHidden id="updateflag" value="#{InventoryMB.updateflag}"></h:inputHidden>
+					</div>
+					<a4j:outputPanel id="editpanel">
+						<table align=center>
+							<tr>
+								<td bgcolor="#efefef">
+									物料编码：
+								</td>
+								<td>
+									<h:inputText id="inco" value="#{InventoryMB.bean.inco}"
+										styleClass="inputtext" onfocus="this.select()" />
+									<span style="">*</span>
+								</td>
+
+
+
+								<td bgcolor="#efefef">
+									物料名称：
+								</td>
+								<td>
+									<h:inputText id="inna" value="#{InventoryMB.bean.inna}"
+										styleClass="inputtext" onfocus="this.select()" />
+									<span style="">*</span>
+								</td>
+								<td bgcolor="#efefef">
+									物料条码：
+								</td>
+								<td>
+									<h:inputText id="inba" value="#{InventoryMB.bean.inba}"
+										styleClass="inputtext" onfocus="this.select()">
+									</h:inputText>
+									<!--<span style="">*</span>
+								--></td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									物料规格：
+								</td>
+								<td>
+									<h:inputText id="inst" value="#{InventoryMB.bean.inst}"
+										styleClass="inputtext" onfocus="this.select()">
+									</h:inputText>
+								</td>
+
+								<td bgcolor="#efefef">
+									物料单位：
+								</td>
+								<td>
+									<h:inputText id="inun" value="#{InventoryMB.bean.inun}"
+										styleClass="inputtext" onfocus="this.select()" />
+
+								</td>
+								<td bgcolor="#efefef">
+									物料类别：
+								</td>
+								<td>
+									<h:inputText id="tyna" value="#{InventoryMB.bean.tyna}"
+										disabled="true" styleClass="inputtext"/>
+									<img id="inty_img" style="cursor: hand"
+										src="../../images/find.gif" onclick="selectInty();" />	
+									<h:inputHidden id="inty" value="#{InventoryMB.bean.inty}"
+										/>	
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									包装规格：
+								</td>
+								<td>
+									<h:inputText id="past" value="#{InventoryMB.bean.past}"
+										styleClass="inputtext" onfocus="this.select()" />
+
+								</td>
+								<td bgcolor="#efefef">
+									辅助编码：
+								</td>
+								<td>
+									<h:inputText id="asco" value="#{InventoryMB.bean.asco}"
+										styleClass="inputtext" onfocus="this.select()" />
+									<span style="">*</span>
+								</td>
+								<td bgcolor="#efefef">
+									ABC分类：
+								</td>
+								<td>
+									<h:selectOneMenu id="abcl" value="#{InventoryMB.bean.abcl}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="A类" itemValue="A" />
+										<f:selectItem itemLabel="B类" itemValue="B" />
+										<f:selectItem itemLabel="C类" itemValue="C" />
+										<f:selectItem itemLabel="L类" itemValue="L" />
+									</h:selectOneMenu>
+								</td>
+							</tr>
+							<td bgcolor="#efefef">
+								保质期控制：
+							</td>
+							<td>
+								<h:selectOneMenu id="cpfl" value="#{InventoryMB.bean.cpfl}"
+									styleClass="selectItem">
+									<f:selectItem itemLabel="是" itemValue="Y" />
+									<f:selectItem itemLabel="否" itemValue="N" />
+
+								</h:selectOneMenu>
+							</td>
+							<td bgcolor="#efefef">
+								保质期类型：
+							</td>
+							<td>
+								<h:selectOneMenu id="cpty" value="#{InventoryMB.bean.cpty}"
+									styleClass="selectItem">
+									<f:selectItem itemLabel="时" itemValue="H" />
+									<f:selectItem itemLabel="日" itemValue="D" />
+									<f:selectItem itemLabel="周" itemValue="W" />
+									<f:selectItem itemLabel="月" itemValue="M" />
+								</h:selectOneMenu>
+							</td>
+							<td bgcolor="#efefef">
+								保质期：
+							</td>
+							<td>
+								<h:inputText id="cpri" value="#{InventoryMB.bean.cpri}"
+									styleClass="selectItem" onfocus="this.select()">
+								</h:inputText>
+							</td>
+
+							<tr>
+								<td bgcolor="#efefef">
+									品牌：
+								</td>
+								<td>
+									<h:inputText id="brde" value="#{InventoryMB.bean.brde}"
+										disabled="true" styleClass="inputtext"  />
+									<img id="inty_img" style="cursor: hand"
+										src="../../images/find.gif" onclick="selectBran();" />	
+									<h:inputHidden id="bran" value="#{InventoryMB.bean.bran}"
+										/>	
+								</td>
+								<td bgcolor="#efefef">
+									专属供应商：
+								</td>
+								<td>
+									<h:inputText id="ceve" value="#{InventoryMB.bean.ceve}"
+										styleClass="inputtext" onfocus="this.select()" />
+									
+								</td>
+								<td bgcolor="#efefef">
+									专属客户：
+								</td>
+								<td>
+									<h:inputText id="cecu" value="#{InventoryMB.bean.cecu}"
+										styleClass="inputtext" onfocus="this.select()" />
+									
+								</td>
+								
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									体积：
+								</td>
+								<td>
+									<h:inputText id="volu" value="#{InventoryMB.bean.volu}"
+										styleClass="inputtext" onfocus="this.select()" />
+									
+								</td>
+								<td bgcolor="#efefef">
+									尺寸：
+								</td>
+								<td>
+									<h:inputText id="inse" value="#{InventoryMB.bean.inse}"
+										styleClass="inputtext" onfocus="this.select()" />
+									
+								</td>
+								
+								<td bgcolor="#efefef">
+									版本：
+								</td>
+								<td>
+									<h:inputText id="vers" value="#{InventoryMB.bean.vers}"
+										styleClass="inputtext" onfocus="this.select()" />
+									
+								</td>
+								</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									长(cm)：
+								</td>
+								<td>
+									<h:inputText id="vole" value="#{InventoryMB.bean.vole}"
+										styleClass="inputtext" onfocus="this.select()" />
+
+								</td>
+
+
+								<td bgcolor="#efefef">
+									宽(cm)：
+								</td>
+								<td>
+									<h:inputText id="vowi" value="#{InventoryMB.bean.vowi}"
+										styleClass="inputtext" onfocus="this.select()" />
+
+								</td>
+								<td bgcolor="#efefef">
+									高(cm)：
+								</td>
+								<td>
+									<h:inputText id="vohe" value="#{InventoryMB.bean.vohe}"
+										styleClass="inputtext" onfocus="this.select()" />
+
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									毛重：
+								</td>
+								<td>
+									<h:inputText id="grwe" value="#{InventoryMB.bean.grwe}"
+										styleClass="inputtext" onfocus="this.select()" />
+	
+								</td>
+								<td bgcolor="#efefef">
+									净重：
+								</td>
+								<td>
+									<h:inputText id="newe" value="#{InventoryMB.bean.newe}"
+										styleClass="inputtext" onfocus="this.select()" />
+	
+								</td>
+								<td bgcolor="#efefef">
+									皮重：
+								</td>
+								<td>
+									<h:inputText id="tawe" value="#{InventoryMB.bean.tawe}"
+										styleClass="inputtext" onfocus="this.select()" />
+	
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									内包装数量：
+								</td>
+								<td>
+									<h:inputText id="inpa" value="#{InventoryMB.bean.inpa}"
+										styleClass="inputtext" onfocus="this.select()" size="8" />
+
+								</td>
+								<td bgcolor="#efefef">
+									外包装数量：
+								</td>
+								<td>
+									<h:inputText id="oupa" value="#{InventoryMB.bean.oupa}"
+										styleClass="inputtext" onfocus="this.select()" size="8" />
+
+								</td>
+
+							
+								<td bgcolor="#efefef">
+									花色：
+								</td>
+								<td>
+									<h:inputText id="colo" value="#{InventoryMB.bean.colo}"
+											styleClass="inputtext" />
+								<%-- 
+									<h:selectOneMenu id="colo" value="#{InventoryMB.bean.colo}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="无" itemValue="1" />
+										<f:selectItem itemLabel="白" itemValue="2" />
+										<f:selectItem itemLabel="红" itemValue="3" />
+										<f:selectItem itemLabel="黄" itemValue="4" />
+										<f:selectItem itemLabel="蓝" itemValue="5" />
+										<f:selectItem itemLabel="绿" itemValue="6" />
+										<f:selectItem itemLabel="青" itemValue="7" />
+										<f:selectItem itemLabel="紫" itemValue="8" />
+										<f:selectItem itemLabel="黑" itemValue="9" />
+									</h:selectOneMenu>
+								--%>
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									类型：
+								</td>
+								<td>
+									<h:selectOneMenu id="baty" value="#{InventoryMB.bean.baty}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="批次" itemValue="P" />
+										<f:selectItem itemLabel="序列" itemValue="S" />
+
+									</h:selectOneMenu>
+								</td>
+								<td bgcolor="#efefef">
+									自定义属性：
+								</td>
+								<td>
+									<h:selectOneMenu id="baru" value="#{InventoryMB.bean.baru}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="条码" itemValue="1" />
+										<f:selectItem itemLabel="批次规则方案" itemValue="0" />
+
+									</h:selectOneMenu>
+								</td>
+
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									物料属性：
+								</td>
+								<td>
+									<h:selectOneMenu id="inpr" value="#{InventoryMB.bean.inpr}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="半成品" itemValue="S" />
+										<f:selectItem itemLabel="产品" itemValue="P" />
+										<f:selectItem itemLabel="物料" itemValue="M" />
+
+									</h:selectOneMenu>
+								</td>
+								<td bgcolor="#efefef">
+									状态：
+								</td>
+								<td>
+									<h:selectOneMenu id="stat" value="#{InventoryMB.bean.stat}"
+										styleClass="selectItem">
+										<f:selectItem itemLabel="有效" itemValue="1" />
+										<f:selectItem itemLabel="注销" itemValue="0" />
+									</h:selectOneMenu>
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#efefef">
+									备注：
+
+								</td>
+								<td colspan="3">
+									<h:inputText id="rema" value="#{InventoryMB.bean.rema}"
+										styleClass="inputtext" onfocus="this.select()" size="48" />
+
+								</td>
+							</tr>
+							<tr>
+								<td colspan="6" align="center">
+									
+									<a4j:commandButton id="saveid" action="#{InventoryMB.save}"
+										value="保存" reRender="output,outTable,msg,tree,out_List"
+										onclick="if(!formCheck()){return false};"
+										oncomplete="endDo();" onmouseover="this.className='a4j_over'"
+										onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
+										rendered="#{InventoryMB.MOD}" />
+									<a4j:commandButton onmouseover="this.className='a4j_over'"
+										onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
+										value="返回" onclick="hideDiv();" />
+
+								</td>
+							</tr>
+						</table>
+
+					</a4j:outputPanel>
+				</h:form>
+
+
+
+			</div>
+		</body>
+	</f:view>
+</html>

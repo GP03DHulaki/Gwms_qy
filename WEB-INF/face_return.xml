@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+
+	<!-- 退货计划MB -->
+	<managed-bean>
+		<managed-bean-name>returnPlanMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReturnPlanMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>returnPlanbiz</property-name>
+			<value>#{returnPlanbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+
+	<!-- 销售退货MB -->
+	<managed-bean>
+		<managed-bean-name>saleReturnMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.SaleReturnMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>salereturnbiz</property-name>
+			<value>#{salereturnbiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+		<!-- 采购退货计划MB -->
+	<managed-bean>
+		<managed-bean-name>purchaseReturnPlanMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PurchaseReturnsPlanMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>purchaseReturnPlanbiz</property-name>
+			<value>#{purchaseReturnPlanbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 采购退货出库MB -->
+	<managed-bean>
+		<managed-bean-name>purchaseReturnMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PurchaseReturnsMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>purchaseReturnbiz</property-name>
+			<value>#{purchaseReturnbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 销售退货收货MB -->
+	<managed-bean>
+		<managed-bean-name>returnReceiptMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReturnReceiptMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>returnReceiptBiz</property-name>
+			<value>#{returnReceiptBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 销售退货不合格商品清点 -->
+	<managed-bean>
+		<managed-bean-name>returnRecodeMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReturnRecodeMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>returnRecodeBiz</property-name>
+			<value>#{returnrecodebiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 销售退货上架 -->
+	<managed-bean>
+		<managed-bean-name>returnPutawayMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ReturnPutawayMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+</faces-config>
+

@@ -1,0 +1,28 @@
+ui {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+}
+
+.left1 {
+	float: left;
+	width: 16%;
+	background: #FFFFFF;
+	border: #3399cc 1px solid;
+}
+
+.right1 {
+	float: left;
+	top: 2;
+	width: 83%;
+	border: #3399cc 1px solid;
+}
+
+.rule {
+	background: #FFFFFF;
+	border: #cedbef 1px solid;
+}

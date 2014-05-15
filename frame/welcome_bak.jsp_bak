@@ -1,0 +1,138 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@page import="javax.faces.context.FacesContext"%>
+<%@page import="javax.faces.el.ValueBinding"%>
+<%@page import="com.gwall.base.BulletinMB"%>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="https://ajax4jsf.dev.java.net/ajax" prefix="a4j"%>
+<%@ taglib uri="/WEB-INF/GWallTag" prefix="g"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%
+	FacesContext context = FacesContext.getCurrentInstance();
+	ValueBinding binding = context.getApplication().createValueBinding(
+			"#{bmb}");
+	BulletinMB ai = (BulletinMB) binding.getValue(context);
+	if (request.getParameter("isAll") != null) {
+		String isall = request.getParameter("isAll").toString();
+		if ("0".equals(isall)) {
+			ai.setSearchKey(" 1=1");
+		}
+	}
+%>
+<html>
+	<head>
+		<title>公告信息</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="公告信息">
+		<link href="<%=request.getContextPath()%>/css/style.css"
+			rel="stylesheet" type="text/css" />
+		<script src="../js/Gwalldate.js"></script>
+	</head>
+	<script type="text/javascript">
+		function doView(parm){
+			document.getElementById("list:id").value=parm;
+			var itemBut=document.getElementById("list:wid");
+			itemBut.click();
+		}
+		
+		function clearData(){ 
+	   		if(document.getElementById('list:strat_date')!=null)
+	     		document.getElementById('list:strat_date').value="";
+	   		if(document.getElementById('list:end_date')!=null)
+	   			document.getElementById('list:end_date').value="";
+	   		if(document.getElementById('list:search_vc_substance')!=null){
+	   			document.getElementById('list:search_vc_substance').value="";
+	   			document.getElementById("list:search_vc_substance").focus();
+	   		}
+	   		if(document.getElementById("list:id")!=null)
+	   			document.getElementById("list:id").value="";
+		}
+		
+		function checkList(){
+			var startDate =document.getElementById("list:strat_date").value;
+			var enddate =document.getElementById("list:end_date").value;
+
+			if(startDate.Trim().length > 0 && enddate.Trim().length > 0){
+				if(enddate<=startDate){
+					alert("结束日期应大于开始日期!!");
+					document.getElementById("list:strat_date").value="";
+					document.getElementById("list:end_date").value="";
+					document.getElementById("list:strat_date").focus();
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		String.prototype.Trim=function(){
+			return this.replace(/(^\s*)|(\s*$)/g, "");
+		}
+		
+		String.prototype.LTrim = function(){
+			return this.replace(/(^\s*)/g, ""); 
+		}
+		
+		String.prototype.RTrim = function(){
+			return this.replace(/(\s*$)/g, "");
+		} 
+	</script>
+	<body id=mmain_body onload="clearData();">
+		<DIV id=mmain>
+			<table>
+				<tr>
+					<td>
+						<f:view>
+							<h:form id="list">
+								<DIV ID=mmain_opt>
+									<h:commandButton id="wid" value="查看" type="submit"
+										style="display:none;" action="#{bmb.search}" />
+									<a4j:commandButton onmouseover="this.className='a4j_over'"
+										onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
+										id="sid" value="查询" type="button"
+										action="#{bmb.selectVoucherid}" reRender="output"
+										requestDelay="50" onclick="if(!checkList()){return false};" />
+									<a4j:commandButton value="重置"
+										onmouseover="this.className='a4j_over'"
+										onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
+										onclick="clearData();return false;" />
+								</DIV>
+								<DIV ID=MMAIN_CND>
+									<h:outputText value="创建日期从:" />
+									<h:inputText id="strat_date" styleClass="inputtext" size="12"
+										value="#{bmb.strat_date}" onfocus="setday(this);" />
+									<h:outputText value="至:" />
+									<h:inputText id="end_date" styleClass="inputtext" size="12"
+										value="#{bmb.end_date}" onfocus="setday(this);" />
+									<h:outputText value="主题:" />
+									<h:inputText id="s_substance" styleClass="inputtext" size="15"
+										value="#{bmb.search_vc_substance}"
+										onkeypress="formsubmit(event);" />
+								</DIV>
+								<h:panelGrid width="760" id="output">
+									<g:GTable gid="gtable2" gtype="grid" gversion="2"
+										gselectsql="SELECT id_id,dt_noteDate,dt_endDate,vc_type,vc_substance,ch_flag,nv_creatorName,
+											dt_createDate,vc_remark FROM v_bulletin
+											where #{bmb.searchKey} "
+										gpage="(pagesize = 20)"
+										gcolumn="gcid = 0(headtext = 序号,name = rowid,width = 30,headtype = sort,align = center,type = text,datatype=string);
+											gcid = vc_type(headtext = 类型,name = vc_type,width = 50,headtype = sort,align = center,type = text,datatype=string);
+											gcid = vc_substance(headtext = 主题,name = vc_substance,width = 500,headtype = text,align = left,type = text,datatype=string);
+											gcid = dt_noteDate(headtext = 发布时间,name = dt_noteDate,width = 70,headtype = text,align = center,type = text,datatype=datetime,dataformat=yyyy-MM-dd);
+											gcid = dt_endDate(headtext = 结束时间,name = dt_endDate,width = 70,headtype = text,text = center,type = text,datatype=datetime,dataformat=yyyy-MM-dd);
+											gcid = nv_creatorName(headtext = 起草人,name = nv_creatorName,width = 60,headtype = text,text = center,type = text,datatype=string);
+										"
+										growclick="javascript:doView('gcolumn[1]');" />
+								</h:panelGrid>
+								<h:inputHidden id="id" value="#{bmb.selectid}" />
+							</h:form>
+						</f:view>
+					</td>
+				</tr>
+			</table>
+		</DIV>
+	</body>
+</html>

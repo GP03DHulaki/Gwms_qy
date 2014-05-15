@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	default-lazy-init="true" 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<!-- ************************************************Biz业务处理层******************************************************* -->
+
+	<!-- 出库订单 -->
+	<bean id="outOrderBiz" class="com.gwall.biz.impl.stockout.OutOrderBizImpl">
+		<constructor-arg ref="outOrderDao"></constructor-arg>
+	</bean>
+	<!-- 电商未出订单 -->
+	<bean id="eshopOrderBiz" class="com.gwall.biz.impl.stockout.EshopOrderBizImpl">
+		<constructor-arg ref="eshopOrderDao"></constructor-arg>
+	</bean>
+	
+	<!-- 出库单 -->
+	<bean id="stockOutBiz" class="com.gwall.biz.impl.stockout.StockOutBizImpl">
+		<constructor-arg ref="stockOutDao"></constructor-arg>
+	</bean>
+	
+	<!-- 装车调度 -->
+	<bean id="entruckScheBiz" class="com.gwall.biz.impl.stockout.EntruckScheBizImpl">
+		<property name="entruckScheDao" ref="entruckScheDao"></property>
+	</bean>
+	
+	<!-- 备货任务 -->
+	<bean id="pickTaskBiz" class="com.gwall.biz.impl.stockout.PickTaskBizImpl">
+		<constructor-arg ref="pickTaskDao"></constructor-arg>
+	</bean>
+	
+	<!-- 拣货下架 -->
+	<bean id="pickDownBiz" class="com.gwall.biz.impl.stockout.PickDownBizImpl">
+		<constructor-arg ref="pickDownDao"></constructor-arg>
+	</bean>
+	
+	<!-- 二次分拣 -->
+	<bean id="secsortBiz" class="com.gwall.biz.impl.stockout.SecsortBizImpl">
+		<constructor-arg ref="secsortDao"></constructor-arg>
+	</bean>
+	
+	<!-- 装车计划 -->
+	<bean id="entruckPlanBiz" class="com.gwall.biz.impl.stockout.EntruckPlanBizImpl">
+		<constructor-arg ref="entruckPlandao"></constructor-arg>
+	</bean>
+	
+	<!-- 装车单 -->
+	<bean id="truckOrderBiz" class="com.gwall.biz.impl.stockout.TruckOrderBizImpl">
+		<constructor-arg ref="truckOrderDao"></constructor-arg>
+	</bean>
+	
+	<!-- 新装车单 -->
+	<bean id="carTransferBiz" class="com.gwall.biz.impl.stockout.CarTransferBizImpl">
+		<constructor-arg ref="carTransferDao"></constructor-arg>
+	</bean>
+	
+	
+	
+	<!-- 装车调度 -->
+	<bean id="carScheBiz" class="com.gwall.biz.impl.stockout.CarScheBizImpl">
+		<constructor-arg ref="carScheDao"></constructor-arg>
+	</bean>
+	
+	<!-- 打包 -->
+	<bean id="packagingBiz" class="com.gwall.biz.impl.stockout.PackingBizImpl">
+		<constructor-arg ref="packagingDao"></constructor-arg>
+	</bean>
+	
+	<!-- 其他出库 -->
+	<bean id="otheroutbiz" class="com.gwall.biz.impl.stockout.OtherOutBizImpl">
+		<constructor-arg ref="otheroutdao"></constructor-arg>
+	</bean>
+	
+	<!-- 出库复核Biz -->
+	<bean id="reviewLibrayBiz" class="com.gwall.biz.impl.stockout.ReviewLibraryBizImpl">
+		<constructor-arg ref="reviewLibraryDao"></constructor-arg>
+	</bean>
+	<!-- 拆包Biz -->
+	<bean id="packOutBiz" class="com.gwall.biz.impl.stockout.PackOutBizImpl">
+		<constructor-arg ref="packOutDao"></constructor-arg>
+	</bean>
+		<!-- 分单池 -->
+	<bean id="billpoolBiz" class="com.gwall.biz.impl.stockout.BillPoolBizImpl">
+		<property name="billpoolDao" ref="billpoolDao"></property>
+	</bean>
+
+	<!-- ************************************************Dao数据库交互层****************************************************** -->
+
+	<!-- 出库订单dao -->
+	<bean id="outOrderDao" class="com.gwall.dao.impl.stockout.OutOrderDaoImpl"></bean>
+	
+	<!-- 电商未出订单dao -->
+	<bean id="eshopOrderDao" class="com.gwall.dao.impl.stockout.EshopOrderDaoImpl"></bean>
+	
+	<!-- 出库单dao -->
+	<bean id="stockOutDao" class="com.gwall.dao.impl.stockout.StockOutDaoImpl"></bean>
+	
+	<!-- 备货任务dao -->
+	<bean id="pickTaskDao" class="com.gwall.dao.impl.stockout.PickTaskDaoImpl"></bean>
+	
+	<!-- 拣货下架dao -->
+	<bean id="pickDownDao" class="com.gwall.dao.impl.stockout.PickDownDaoImpl"></bean>
+	
+	<!-- 二次分拣dao -->
+	<bean id="secsortDao" class="com.gwall.dao.impl.stockout.SecsortDaoImpl"></bean>
+	
+	<!-- 装车调度dao -->
+	<bean id="entruckScheDao" class="com.gwall.dao.impl.stockout.EntruckScheDaoImpl"></bean>
+	
+	<!-- 装车计划dao -->
+	<bean id="entruckPlandao" class="com.gwall.dao.impl.stockout.EntruckPlanDaoImpl"></bean>
+	
+	<!-- 装车单dao -->
+	<bean id="truckOrderDao" class="com.gwall.dao.impl.stockout.TruckOrderDaoImpl"></bean>
+	
+	<!-- 新装车单dao -->
+	<bean id="carTransferDao" class="com.gwall.dao.impl.stockout.CarTransferDaoImpl"></bean>
+	
+	<!-- 配车调度dao -->
+	<bean id="carScheDao" class="com.gwall.dao.impl.stockout.CarScheDaoImpl2"></bean>
+	
+	<!--  打包dao -->
+	<bean id="packagingDao"  class="com.gwall.dao.impl.stockout.PackagingDaoImpl"></bean>
+	
+	<!-- 其他出库dao -->
+	<bean id="otheroutdao" class="com.gwall.dao.impl.stockout.OtherOutDaoImpl"></bean>
+	
+	<!-- 出库复核Dao -->
+	<bean id="reviewLibraryDao" class="com.gwall.dao.impl.stockout.ReviewLibraryDaoImpl"></bean>
+	
+	<!-- 拆包Dao -->
+	<bean id="packOutDao" class="com.gwall.dao.impl.stockout.PackOutDaoImpl"></bean>
+	
+		<!-- 分单池配置dao -->
+	<bean id="billpoolDao" class="com.gwall.dao.impl.stockout.BillPoolDaoImpl"></bean>
+	
+</beans>

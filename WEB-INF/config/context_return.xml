@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+	default-lazy-init="true">
+
+	<!-- ************************************************Biz业务处理层******************************************************* -->
+
+	<!-- 销售退货计划Biz-->
+	<bean id="returnPlanbiz"
+		class="com.gwall.biz.impl.returns.ReturnPlanBizImpl">
+		<constructor-arg ref="returnPlandao"></constructor-arg>
+	</bean>
+	
+	<!-- 销售退货收货Biz -->
+	<bean id="returnReceiptBiz" class="com.gwall.biz.impl.returns.ReturnReceiptBizImpl">
+		<constructor-arg ref="returnReceiptdao"></constructor-arg>
+	</bean>
+
+	<!-- 销售退货Biz -->
+	<bean id="salereturnbiz"
+		class="com.gwall.biz.impl.returns.SaleReturnBizImpl">
+		<constructor-arg ref="salereturndao"></constructor-arg>
+	</bean>
+	
+	<!-- 采购退货出库计划Biz -->
+	<bean id="purchaseReturnPlanbiz" class="com.gwall.biz.impl.returns.PurchaseReturnsPlanBizImpl">
+		<constructor-arg ref="purchasereturnplandao"></constructor-arg>
+	</bean>
+	
+	<!-- 采购退货出库Biz -->
+	<bean id="purchaseReturnbiz" class="com.gwall.biz.impl.returns.PurchaseReturnsBizImpl">
+		<constructor-arg ref="purchasereturndao"></constructor-arg>
+	</bean>
+	
+	<!-- 销售退货不合格商品清点 -->
+	<bean id="returnrecodebiz" class="com.gwall.biz.impl.returns.ReturnReceiptBizImpl">
+		<constructor-arg ref="returnrecodedao"></constructor-arg>
+	</bean>
+
+	<!-- ************************************************Dao数据库交互层****************************************************** -->
+
+
+
+	<!-- 销售退货计划Dao -->
+	<bean id="returnPlandao"
+		class="com.gwall.dao.impl.returns.ReturnPlanDaoImpl">
+	</bean>
+	
+	<!-- 销售退货收货Dao -->
+	<bean id="returnReceiptdao" class="com.gwall.dao.impl.returns.ReturnReceiptDaoImpl"></bean>
+
+	<!-- 销售退货Dao -->
+	<bean id="salereturndao"
+		class="com.gwall.dao.impl.returns.SaleReturnDaoImpl">
+	</bean>
+	
+	
+	<!-- 采购退货计划Dao -->
+	<bean id="purchasereturnplandao"
+		class="com.gwall.dao.impl.returns.PurchaseReturnsPlanDaoImpl">
+	</bean>
+	
+	<!-- 采购退回出库Dao -->
+	<bean id="purchasereturndao"
+		class="com.gwall.dao.impl.returns.PurchaseReturnsDaoImpl">
+	</bean>
+	
+	<!-- 销售退货不合格商品清点 -->
+	<bean id="returnrecodedao" class="com.gwall.dao.impl.returns.ReturnRecodeDaoImpl"></bean>
+	
+</beans>

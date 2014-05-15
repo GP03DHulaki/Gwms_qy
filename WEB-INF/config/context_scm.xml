@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-
+
+tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-
+
+aop-2.0.xsd">
+
+
+	<!-- ************************************************Biz业务处理层
+
+******************************************************* -->
+
+	<!-- 款号登记 -->
+	<bean id="prodesignBiz" class="com.gwall.biz.impl.scm.ProdesignBizImpl">
+		<constructor-arg ref="prodesignDao"></constructor-arg>
+	</bean>
+	
+	<!--开发进度 -->
+	<bean id="desprogressBiz" class="com.gwall.biz.impl.scm.DesprogressBizImpl">
+		<constructor-arg ref="desprogressDao"></constructor-arg>
+	</bean>
+	
+	<!--下单-->
+	<bean id="productOrderBiz" class="com.gwall.biz.impl.scm.ProductOrderBizImpl">
+		<constructor-arg ref="productOrderDao"></constructor-arg>
+	</bean>
+	
+	<!--工艺制造-->
+	<bean id="techSizeBiz" class="com.gwall.biz.impl.scm.TechSizeBizImpl">
+		<constructor-arg ref="techSizeDao"></constructor-arg>
+	</bean>
+	<!--调版单-->
+	<bean id="adjustModelBiz" class="com.gwall.biz.impl.scm.AdjustModelBizImpl">
+		<constructor-arg ref="adjustModelDao"></constructor-arg>
+	</bean>
+
+	<!--开发需求-->
+	<bean id="derequireBiz" class="com.gwall.biz.impl.scm.DerequireBizImpl">
+		<constructor-arg ref="derequireDao"></constructor-arg>
+	</bean>
+	
+	<!--物料清单-->
+	<bean id="bomBiz" class="com.gwall.biz.impl.scm.BomBizImpl">
+		<constructor-arg ref="bomDao"></constructor-arg>
+	</bean>
+	
+	<!-- 颜色尺码Biz -->
+	<bean id="coloSizeBiz" class="com.gwall.biz.impl.scm.ColoSizeBizImpl">
+		<property name="colorDao" ref="colorDao"></property>
+		<property name="sizeDao" ref="sizeDao"></property>
+		<property name="coloSizeDao" ref="coloSizeDao"></property>
+	</bean>
+	
+	<!-- 成本预算 -->
+	<bean id="budgetCostBiz" class="com.gwall.biz.impl.scm.BudgetCostBizImpl">
+		<constructor-arg ref="budgetCostDao"></constructor-arg>
+	</bean>
+	
+	<!--货期和报价-->
+	<bean id="offerBiz" class="com.gwall.biz.impl.scm.OfferBizImpl">
+		<constructor-arg ref="offerDao"></constructor-arg>
+	</bean>
+	
+
+	<!-- 物料需求Biz -->
+	<bean id="matRequireBiz" class="com.gwall.biz.impl.scm.MatRequireBizImpl">
+		<constructor-arg ref="matRequireDao"></constructor-arg>
+	</bean>
+	
+	<!-- 
+	采购管理-采购订单Biz 
+	<bean id="scmpoBiz" class="com.gwall.biz.impl.scm.ScmpoBizImpl">
+		<constructor-arg ref="scmpoDao"></constructor-arg>
+	</bean>
+	
+	入库通知biz 
+	<bean id="scmpuapbiz"
+		class="com.gwall.biz.impl.scm.ScmpuapBizImpl">
+		<constructor-arg ref="scmpuapDao"></constructor-arg>
+	</bean>
+	-->
+
+	<!-- 采购计划biz -->
+	<bean id="poplanbiz"
+		class="com.gwall.biz.impl.scm.PoplanBizImpl">
+		<constructor-arg ref="poplanDao"></constructor-arg>
+	</bean>
+	
+	<!-- 生产制单biz -->
+	<bean id="makeSingleBiz"
+		class="com.gwall.biz.impl.scm.MakeSingleBizImpl">
+		<constructor-arg ref="makeSingleDao"></constructor-arg>
+	</bean>
+	
+	<!-- 外发加工单biz -->
+	<bean id="getinveBiz"
+		class="com.gwall.biz.impl.scm.GetinveBizImpl">
+		<constructor-arg ref="getinveDao"></constructor-arg>
+	</bean>
+	
+	<!-- 领料单biz -->
+	<bean id="sooutinveBiz"
+		class="com.gwall.biz.impl.scm.SooutinveBizImpl">
+		<constructor-arg ref="sooutinveDao"></constructor-arg>
+	</bean>
+	
+	<!-- 补料单biz -->
+	<bean id="addinveBiz"
+		class="com.gwall.biz.impl.scm.AddinveBizImpl">
+		<constructor-arg ref="addinveDao"></constructor-arg>
+	</bean>
+	
+	<!-- 领料单出库单biz -->
+	<bean id="sooutBiz"
+		class="com.gwall.biz.impl.scm.SooutBizImpl">
+		<constructor-arg ref="sooutDao"></constructor-arg>
+	</bean>
+	
+	<!-- ************************************************Dao数据库交互层
+
+****************************************************** -->
+
+	<!-- 款号登记dao -->
+	<bean id="prodesignDao" class="com.gwall.dao.impl.scm.ProdesignDaoImpl"></bean>
+	<!--开发进度 -->
+	<bean id="desprogressDao" class="com.gwall.dao.impl.scm.DesprogressDaoImpl"></bean>
+	<!--下单 -->
+	<bean id="productOrderDao" class="com.gwall.dao.impl.scm.ProductOrderDaoImpl"></bean>
+	<!--工艺制造 -->
+	<bean id="techSizeDao" class="com.gwall.dao.impl.scm.TechSizeDaoImpl"></bean>
+	<!--调版单 -->
+	<bean id="adjustModelDao" class="com.gwall.dao.impl.scm.AdjustModelDaoImpl"></bean>
+	<!--开发需求 -->
+	<bean id="derequireDao" class="com.gwall.dao.impl.scm.DerequireDaoImpl"></bean>
+	<!--物料清单 -->
+	<bean id="bomDao" class="com.gwall.dao.impl.scm.BomDaoImpl"></bean>
+	
+	<!-- 图片操作相关dao -->
+	<bean id="uploadFileDao" class="com.gwall.dao.impl.scm.UploadFileDaoImpl"></bean>
+	
+	<!-- coloSizeDao -->
+	<bean id="coloSizeDao" class="com.gwall.dao.impl.scm.ColoSizeDaoImpl"></bean>
+	<!-- 物料需求Dao -->
+	<bean id="matRequireDao" class="com.gwall.dao.impl.scm.MatRequireDaoImpl"></bean>
+	<!-- 采购管理-采购订单-货期异动 -->
+	<bean id="idhsDao" class="com.gwall.dao.impl.scm.IdhsDaoImpl"></bean>
+	<!--货期和报价 -->
+	<bean id="offerDao" class="com.gwall.dao.impl.scm.OfferDaoImpl"></bean>
+	<!-- 成本预算dao -->
+	<bean id="budgetCostDao" class="com.gwall.dao.impl.scm.BudgetCostDaoImpl"></bean>
+	<!-- 
+	采购管理-采购订单
+	<bean id="scmpoDao" class="com.gwall.dao.impl.scm.ScmpoDaoImpl"></bean>
+	入库通知dao 
+	<bean id="scmpuapDao" class="com.gwall.dao.impl.scm.ScmpuapDaoImpl">
+	</bean>
+	-->
+	<!-- 采购计划dao -->
+	<bean id="poplanDao" class="com.gwall.dao.impl.scm.PoplanDaoImpl">
+	</bean>
+	
+	<!-- 生产制单dao -->
+	<bean id="makeSingleDao" class="com.gwall.dao.impl.scm.MakeSingleDaoImpl">
+	</bean>
+	<!-- 外发加工单dao -->
+	<bean id="getinveDao" class="com.gwall.dao.impl.scm.GetinveDaoImpl">
+	</bean>
+	<!-- 领料单dao -->
+	<bean id="sooutinveDao" class="com.gwall.dao.impl.scm.SooutinveDaoImpl">
+	</bean>
+	<!-- 补料单dao -->
+	<bean id="addinveDao" class="com.gwall.dao.impl.scm.AddinveDaoImpl">
+	</bean>
+	<!-- 领料出库单dao -->
+	<bean id="sooutDao" class="com.gwall.dao.impl.scm.SooutDaoImpl">
+	</bean>
+	
+</beans>

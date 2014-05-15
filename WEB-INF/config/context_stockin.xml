@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<!-- ************************************************Biz业务处理层******************************************************* -->
+
+	<!-- 采购订单 -->
+	<bean id="pubmbiz" class="com.gwall.biz.impl.stockin.PubmBizImpl">
+		<constructor-arg ref="pubmdao"></constructor-arg>
+	</bean>
+
+	<!-- 采购预约-->
+	<bean id="purchaseBiz" class="com.gwall.biz.impl.stockin.PurchaseBizImpl">
+		<constructor-arg ref="purchaseDao"></constructor-arg>
+	</bean>
+
+	<!-- ASN订单 <bean id="asnbiz" class="com.gwall.biz.impl.stockin.AsnBizImpl">
+		<property name="asnDao" ref="asndao"></property>
+		</bean>
+	-->
+
+	<bean id="asnbiz" class="com.gwall.biz.impl.stockin.AsnBizImpl">
+		<constructor-arg ref="asndao"></constructor-arg>
+	</bean>
+
+	<!-- 采购入库单 -->
+	<bean id="poinbiz" class="com.gwall.biz.impl.stockin.PoinBizImpl">
+		<constructor-arg ref="poindao"></constructor-arg>
+	</bean>
+
+	<!-- 生产入库单 -->
+	<bean id="moinbiz" class="com.gwall.biz.impl.stockin.MoinBizImpl">
+		<constructor-arg ref="moindao"></constructor-arg>
+	</bean>
+
+	<!-- 其它入库单 -->
+	<bean id="otherinbiz"
+		class="com.gwall.biz.impl.stockin.OtherinBizImpl">
+		<constructor-arg ref="otherindao"></constructor-arg>
+	</bean>
+
+	<!-- 生产计划单 -->
+	<bean id="moplanbiz"
+		class="com.gwall.biz.impl.stockin.MoPlanBizImpl">
+		<constructor-arg ref="moplandao"></constructor-arg>
+	</bean>
+
+	<!-- 采购到货biz -->
+	<bean id="purchaseArrivebiz"
+		class="com.gwall.biz.impl.stockin.PurchaseArriveBizImpl">
+		<constructor-arg ref="purchasearrivedao"></constructor-arg>
+	</bean>
+
+	<!-- 检验入库单 wondeful -->
+	<bean id="checkbiz" class="com.gwall.biz.impl.stockin.CheckBizImpl">
+		<constructor-arg ref="checkdao"></constructor-arg>
+	</bean>	
+	
+	<!-- 入库装箱biz -->
+	<bean id="boxinbiz" class="com.gwall.biz.impl.stockin.BoxInBizImpl">
+		<constructor-arg ref="boxindao"></constructor-arg>
+	</bean>
+	<!-- ************************************************Dao数据库交互层****************************************************** -->
+
+	<!-- 采购订单dao -->
+	<bean id="pubmdao" class="com.gwall.dao.impl.stockin.PubmDaoImpl"></bean>
+	<!-- 采购预约-->
+	<bean id="purchaseDao" class="com.gwall.dao.impl.stockin.PurchaseDaoImpl"></bean>
+	<!-- ASN订单dao -->
+	<bean id="asndao" class="com.gwall.dao.impl.stockin.AsnDaoImpl"></bean>
+
+	<!-- 采购入库单 -->
+	<bean id="poindao" class="com.gwall.dao.impl.stockin.PoinDaoImpl"></bean>
+
+	<!-- 生产入库单 -->
+	<bean id="moindao" class="com.gwall.dao.impl.stockin.MoinDaoImpl"></bean>
+
+	<!-- 其它入库单 -->
+	<bean id="otherindao"
+		class="com.gwall.dao.impl.stockin.OtherinDaoImpl">
+	</bean>
+
+	<!-- 其它入库单 -->
+	<bean id="moplandao"
+		class="com.gwall.dao.impl.stockin.MoPlanDaoImpl">
+	</bean>
+
+	<bean id="crbmdao" class="com.gwall.dao.impl.stockin.CrbmDaoImpl"></bean>
+	
+	<!-- 质检任务单 wonderful-->
+	<bean id="checkTaskDao" class="com.gwall.dao.impl.stockin.CheckTaskDaoImpl"></bean>
+	
+	<!-- 检验入库单 wonderful-->
+	<bean id="checkdao" class="com.gwall.dao.impl.stockin.CheckDaoImpl"></bean>
+	
+
+	
+	<!-- 采购到货dao -->
+	<bean id="purchasearrivedao"
+		class="com.gwall.dao.impl.stockin.PurchaseArriveDaoImpl">
+	</bean>
+	
+	<!-- 入库装箱dao -->
+	<bean id="boxindao"
+		class="com.gwall.dao.impl.stockin.BoxInDaoImpl">
+	</bean>
+</beans>

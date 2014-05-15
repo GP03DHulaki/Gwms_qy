@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- 款号登记 -->
+	<managed-bean>
+		<managed-bean-name>prodesignMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.ProdesignMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>prodesignBiz</property-name>
+			<value>#{prodesignBiz}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userBiz</property-name>
+			<value>#{userbiz}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>patClassBiz</property-name>
+			<value>#{patClassBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 调版单 -->
+	<managed-bean>
+		<managed-bean-name>adjustModelMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.AdjustModelMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>adjustModelBiz</property-name>
+			<value>#{adjustModelBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 开发进度 -->
+	<managed-bean>
+		<managed-bean-name>desprogressMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.DesprogressMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>desprogressBiz</property-name>
+			<value>#{desprogressBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!--生产订单 下单 -->
+	<managed-bean>
+		<managed-bean-name>productOrderMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.ProductOrderMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>productOrderBiz</property-name>
+			<value>#{productOrderBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!--物料清单-->
+	<managed-bean>
+		<managed-bean-name>bomMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.BomMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>bomBiz</property-name>
+			<value>#{bomBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 工艺制造-->
+	<managed-bean>
+		<managed-bean-name>techSizeMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.TechSizeMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>techSizeBiz</property-name>
+			<value>#{techSizeBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!--开发需求-->
+	<managed-bean>
+		<managed-bean-name>derequireMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.DerequireMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>derequireBiz</property-name>
+			<value>#{derequireBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 图片上传的操作类 -->
+	<managed-bean>
+		<managed-bean-name>uploadFileMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.UploadFileMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>uploadFileDao</property-name>
+			<value>#{uploadFileDao}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 物料的颜色尺码表 -->
+	<managed-bean>
+		<managed-bean-name>coloSizeMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.ColoSizeMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>coloSizeBiz</property-name>
+			<value>#{coloSizeBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	
+	<!-- 成本预算 -->
+	<managed-bean>
+		<managed-bean-name>budgetCostMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.BudgetCostMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>budgetCostBiz</property-name>
+			<value>#{budgetCostBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+
+	<!-- 货期和报价 -->
+	<managed-bean>
+		<managed-bean-name>offerMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.OfferMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>offerBiz</property-name>
+			<value>#{offerBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+
+	<!-- 物料需求表 -->
+	<managed-bean>
+		<managed-bean-name>matRequireMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.MatRequireMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>matRequireBiz</property-name>
+			<value>#{matRequireBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 采购管理-采购订单-货期异动 -->
+	<managed-bean>
+		<managed-bean-name>idhsMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.IdhsMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>idhsDao</property-name>
+			<value>#{idhsDao}</value>
+		</managed-property>
+	</managed-bean>
+	
+	
+	<!-- 
+	采购管理-采购订单
+	<managed-bean>
+		<managed-bean-name>scmpoMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.scm.ScmpoMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>scmpoBiz</property-name>
+			<value>#{scmpoBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	入库通知
+	<managed-bean>
+		<managed-bean-name>scmpuapMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.ScmpuapMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>scmpuapbiz</property-name>
+			<value>#{scmpuapbiz}</value>
+		</managed-property>
+	</managed-bean>
+	 -->
+	
+	<!-- 采购计划 -->
+	<managed-bean>
+		<managed-bean-name>poplanMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.PoplanMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>poplanbiz</property-name>
+			<value>#{poplanbiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 生产制单 -->
+	<managed-bean>
+		<managed-bean-name>makeSingleMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.MakeSingleMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>makeSingleBiz</property-name>
+			<value>#{makeSingleBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 外发加工单 -->
+	<managed-bean>
+		<managed-bean-name>getinveMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.GetinveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>getinveBiz</property-name>
+			<value>#{getinveBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 领料单 -->
+	<managed-bean>
+		<managed-bean-name>sooutinveMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.SooutinveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>sooutinveBiz</property-name>
+			<value>#{sooutinveBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 补料单 -->
+	<managed-bean>
+		<managed-bean-name>addinveMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.AddinveMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>addinveBiz</property-name>
+			<value>#{addinveBiz}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- 领料出库单 -->
+	<managed-bean>
+		<managed-bean-name>sooutMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.scm.SooutMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property> 
+			<property-name>sooutBiz</property-name>
+			<value>#{sooutBiz}</value>
+		</managed-property>
+	</managed-bean>
+</faces-config>
+

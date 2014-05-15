@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	default-lazy-init="true" 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<!-- ************************************************Biz业务处理层******************************************************* -->
+	<!-- 物料资料业务处理 -->
+	<bean id="inventorybiz" class="com.gwall.biz.impl.base.InventoryBizImpl">
+		<property name="inventoryDao" ref="inventorydao"></property>
+	</bean>
+	
+	<!-- SCM物料档案业务处理 -->
+	<bean id="scmInveBiz" class="com.gwall.biz.impl.base.ScmInveBizImpl">
+		<property name="scmInveDao" ref="scmInveDao"></property>
+	</bean>
+	
+	<!-- 库位资料业务处理 -->
+	<bean id="warehousebiz" class="com.gwall.biz.impl.base.WarehouseBizImpl">
+		<property name="warehouseDao" ref="warehousedao"></property>
+	</bean>
+	
+	<!-- 款式Biz -->
+	<bean id="patClassBiz" class="com.gwall.biz.impl.base.PatClassBizImpl">
+		<property name="patClassDao" ref="patClassDao"></property>
+	</bean>
+
+	<!-- ************************************************Dao数据库交互层****************************************************** -->
+
+	<!-- 物料资料dao -->
+	<bean id="inventorydao" class="com.gwall.dao.impl.base.InventoryDaoImpl"></bean>
+	<!--scm 物料档案dao -->
+	<bean id="scmInveDao" class="com.gwall.dao.impl.base.ScmInveDaoImpl"></bean>
+	
+	<!-- 库位资料Dao -->
+	<bean id="warehousedao" class="com.gwall.dao.impl.base.WarehouseDaoImpl"></bean>
+	
+	<!-- 客户档案Dao -->
+	<bean id="customerDao" class="com.gwall.dao.impl.base.CustomerDaoImpl"></bean>
+	
+	<!-- 供应商档案Dao -->
+	<bean id="supplierDao" class="com.gwall.dao.impl.base.SupplierDaoImpl"></bean>
+	
+	<!-- 品牌档案Dao -->
+	<bean id="brandDao" class="com.gwall.dao.impl.base.BrandDaoImpl"></bean>
+	
+	<!-- 物料类别档案Dao -->
+	<bean id="invClassDao" class="com.gwall.dao.impl.base.InvClassDaoImpl"></bean>
+	
+	<!-- 地区分类Dao -->
+	<bean id="areaDao" class="com.gwall.dao.impl.base.AreaDaoImpl"></bean>
+	
+	<!-- 客户分类Dao -->
+	<bean id="cusClassDao" class="com.gwall.dao.impl.base.CusClassDaoImpl"></bean>
+	
+	<!-- 供应商分类Dao -->
+	<bean id="supClassDao" class="com.gwall.dao.impl.base.SupClassDaoImpl"></bean>
+	
+	<!-- SAP仓库地点Dao -->
+	<bean id="sAPinventoryDao" class="com.gwall.dao.impl.base.SAPinventoryDaoImpl"></bean>
+	
+	<!-- 库存逻辑地点仓库设置Dao -->
+	<bean id="logicaddrwhDao" class="com.gwall.dao.impl.base.LogicaddrwhDaoImpl"></bean>
+	
+	<!-- 库存逻辑地点设置Dao -->
+	<bean id="inventoryLogicAddressDao" class="com.gwall.dao.impl.base.inventoryLogicAddressDaoImpl"></bean>
+	
+	<!-- 路线Dao -->
+	<bean id="lineDao" class="com.gwall.dao.impl.base.LineDaoImpl"></bean>
+	
+	<!-- 物流商大头字Dao -->
+	<bean id="lprdDao" class="com.gwall.dao.impl.base.LprdDaoImpl"></bean>
+	
+	<!-- 物料默认库位Dao -->
+	<bean id="inwhDao" class="com.gwall.dao.impl.base.InwhDaoImpl"></bean>
+	
+	<!-- 部门档案Dao -->
+	<bean id="deptDao" class="com.gwall.dao.impl.base.DeptDaoImpl"></bean>
+	
+	<!-- 物流商Dao -->
+	<bean id="carrierDao" class="com.gwall.dao.impl.base.CarrierDaoImpl"></bean>
+	<!-- 快递单号 -->
+	<bean id="expressDao" class="com.gwall.dao.impl.base.ExpressDaoImpl"></bean>
+	
+	<!-- 颜色Dao -->
+	<bean id="colorDao" class="com.gwall.dao.impl.base.ColorDaoImpl"></bean>
+	
+	<!-- 尺码Dao -->
+	<bean id="sizeDao" class="com.gwall.dao.impl.base.SizeDaoImpl"></bean>
+	
+	<!-- 款式Dao -->
+	<bean id="patClassDao" class="com.gwall.dao.impl.base.PatClassDaoImpl"></bean>
+	
+	<!-- 工艺信息Dao -->
+	<bean id="crinDao" class="com.gwall.dao.impl.base.CrinDaoImpl"></bean>
+	
+	<!-- 产品部位信息Dao -->
+	<bean id="dvptDao" class="com.gwall.dao.impl.base.DvptDaoImpl"></bean>
+	
+	<!-- 色卡档案Dao -->
+	<bean id="ccfiDao" class="com.gwall.dao.impl.base.CcfiDaoImpl"></bean>
+	
+	<!-- 供应商色号Dao -->
+	<bean id="riciDao" class="com.gwall.dao.impl.base.RiciDaoImpl"></bean>
+	
+	<!-- 合格证档案Dao -->
+	<bean id="cefoDao" class="com.gwall.dao.impl.base.CefoDaoImpl"></bean>
+	
+	<!-- 物料成分Dao -->
+	<bean id="compDao" class="com.gwall.dao.impl.base.CompDaoImpl"></bean>
+	
+	<!-- 平台档案Dao -->
+	<bean id="treeaceDao" class="com.gwall.dao.impl.base.TreeaceDaoImpl"></bean>
+	
+	<!-- 店铺档案Dao -->
+	<bean id="storefileDao" class="com.gwall.dao.impl.base.StorefileDaoImpl"></bean>
+	
+	<!-- 预售计划Dao -->
+	<bean id="salesPlanDao" class="com.gwall.dao.impl.base.SalesPlanDaoImpl"></bean>
+	
+	<!-- 耗材管理Dao -->
+	<bean id="materialUseDao" class="com.gwall.dao.impl.base.MaterialUseDaoImpl"></bean>
+	
+	<!-- 物流发货明细Dao -->
+	<bean id="deliveryDetailDao" class="com.gwall.dao.impl.base.DeliveryDetailDaoImpl"></bean>
+	
+	<!-- 商品默认补货数量Dao -->
+	<bean id="insyDao" class="com.gwall.dao.impl.base.InsyDaoImpl"></bean>
+</beans>

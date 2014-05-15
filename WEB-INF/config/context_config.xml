@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- 使用proxool数据库连接池 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.gwalldb</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSourceFromOracle"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.gwall_oracle</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSourceFromMysql"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.gwall_mysql</value>
+		</property>
+	</bean>
+
+	<!-- quartzJob -->
+	<bean id="writebackall" class="com.gwall.job.WriteBackAll"></bean>
+
+	<!-- =========================淘宝接口 satrt======================= -->
+	<!-- 库存异动 -->
+	<bean id="sendInVentoryChangedId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="sendInVentoryChanged" />
+	</bean>
+
+	<bean id="doSendInVentoryChanged"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="sendInVentoryChangedId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 0/1 7-23 * * ?</value><!-- 2分钟执行一次 -->
+		</property>
+	</bean>
+	
+	<!-- 销售发货 -->
+	<bean id="sendDeliveryFinishedId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="sendDeliveryFinished" />
+	</bean>
+
+	<bean id="doSendDeliveryFinished"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="sendDeliveryFinishedId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>6 0/1 7-23 * * ?</value><!-- 6分钟执行一次 -->
+		</property>
+	</bean>
+
+	<!-- 到货通知 -->
+	<bean id="sendInBoundNoticeId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="sendInBoundNotice" />
+	</bean>
+
+	<bean id="doSendInBoundNotice"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="sendInBoundNoticeId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>6 0/1 7-23 * * ?</value><!-- 5分钟执行一次 -->
+		</property>
+	</bean>
+
+	<!-- 验证出库订单是否可以出库 -->
+	<bean id="checkOrderNoServicesAPIId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="CheckOrderNoServicesAPI" />
+	</bean>
+
+	<bean id="doCheckOrderNoServicesAPI"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="checkOrderNoServicesAPIId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 0/1 7-23 * * ?</value><!-- 2分钟执行一次 -->
+		</property>
+	</bean>
+
+	<!-- 下载京东出库单 -->
+	<bean id="QueryOrderInfoServicesAPIId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="QueryOrderInfoServicesAPI" />
+	</bean>
+
+	<bean id="doQueryOrderInfoServicesAPI"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="QueryOrderInfoServicesAPIId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>1 0/1 7-23 * * ?</value><!-- 1分钟执行一次 -->
+		</property>
+	</bean>
+
+	<!-- 下载当当出库单 -->
+	<bean id="DangDangOrderPrintServicesAPIId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod"
+			value="DangDangOrderPrintServicesAPI" />
+	</bean>
+
+	<bean id="doDangDangOrderPrintServicesAPI"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail"
+			ref="DangDangOrderPrintServicesAPIId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>2 0/1 7-23 * * ?</value><!-- 1分钟执行一次 -->
+		</property>
+	</bean>
+
+	<!-- 下载凡客出库单 -->
+	<bean id="VanclOrderPrintServicesAPIId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod"
+			value="VanclOrderPrintServicesAPI" />
+	</bean>
+
+	<bean id="doVanclOrderPrintServicesAPI"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="VanclOrderPrintServicesAPIId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>5 0/1 7-23 * * ?</value><!-- 1分钟执行一次 -->
+		</property>
+	</bean>
+	
+	<!-- 向SAP发送其他出库 -->
+	<bean id="qtckSendSAPId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="qtckSAP" />
+	</bean>
+
+	<bean id="doQtckSendSAPId"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="qtckSendSAPId" />
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 0/2 7-23 * * ?</value><!-- 2分钟执行一次 -->
+		</property>
+	</bean>
+	
+	<!-- 向SAP发送其他调仓 -->
+	<bean id="otherChangeWahoId"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="writebackall" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="otherChangeWaho" />
+	</bean>
+	<!-- =========================淘宝接口 end======================= -->
+
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+	<bean id="quertz" lazy-init="true" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 
+				<ref bean="doCheckOrderNoServicesAPI" />
+				<ref bean="doVanclOrderPrintServicesAPI" />
+				<ref bean="doSendInVentoryChanged" />
+				<ref bean="doSendDeliveryFinished" />
+				<ref bean="doDangDangOrderPrintServicesAPI" />
+				<ref bean="doSendDeliveryFinished" />
+				 -->				
+
+			</list>
+		</property>
+	</bean>
+</beans>

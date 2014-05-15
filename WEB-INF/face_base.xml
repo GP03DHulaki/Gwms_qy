@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ <!-- 库位资料 -->
+ <managed-bean>
+  <managed-bean-name>warehouseMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.WarehouseMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>warehousebiz</property-name>
+   <value>#{warehousebiz}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物料管理 -->
+ <managed-bean>
+  <managed-bean-name>InveMB</managed-bean-name>
+  <managed-bean-class>com.gwall.base.InveMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <!-- 商品档案管理 -->
+ <managed-bean>
+  <managed-bean-name>InventoryMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.InventoryMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>inventorybiz</property-name>
+   <value>#{inventorybiz}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物料档案管理 -->
+ <managed-bean>
+  <managed-bean-name>scmInveMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.ScmInveMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>scmInveBiz</property-name>
+   <value>#{scmInveBiz}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 客户档案 -->
+ <managed-bean>
+  <managed-bean-name>customerMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.CustomerMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>customerDao</property-name>
+   <value>#{customerDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 平台档案 -->
+ <managed-bean>
+  <managed-bean-name>treeaceMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.TreeaceMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>treeaceDao</property-name>
+   <value>#{treeaceDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 平台档案 -->
+ <managed-bean>
+  <managed-bean-name>storefileMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.StorefileMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>storefileDao</property-name>
+   <value>#{storefileDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 供应商档案 -->
+ <managed-bean>
+  <managed-bean-name>supplierMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.SupplierMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>supplierDao</property-name>
+   <value>#{supplierDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 品牌档案 -->
+ <managed-bean>
+  <managed-bean-name>brandMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.BrandMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>brandDao</property-name>
+   <value>#{brandDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物料类别档案 -->
+ <managed-bean>
+  <managed-bean-name>invClassMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.InvClassMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>invClassDao</property-name>
+   <value>#{invClassDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 预售计划 -->
+ <managed-bean>
+  <managed-bean-name>salesPlanMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.SalesPlanMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>salesPlanDao</property-name>
+   <value>#{salesPlanDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 耗材管理 -->
+ <managed-bean>
+  <managed-bean-name>materialUseMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.MaterialUseMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>materialUseDao</property-name>
+   <value>#{materialUseDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物流发货明细 -->
+  <managed-bean>
+  <managed-bean-name>deliveryDetailMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.DeliveryDetailMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>deliveryDetailDao</property-name>
+   <value>#{deliveryDetailDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 地区分类 -->
+ <managed-bean>
+  <managed-bean-name>areaMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.AreaMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>areaDao</property-name>
+   <value>#{areaDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 客户分类 -->
+ <managed-bean>
+  <managed-bean-name>cusClassMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.CusClassMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>cusClassDao</property-name>
+   <value>#{cusClassDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 供应商分类 -->
+ <managed-bean>
+  <managed-bean-name>supClassMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.SupClassMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>supClassDao</property-name>
+   <value>#{supClassDao}</value>
+  </managed-property>
+ </managed-bean>
+  <!-- SAP仓库地点-->
+ <managed-bean>
+  <managed-bean-name>sAPinventoryMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.SAPinventoryMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>sAPinventoryDao</property-name>
+   <value>#{sAPinventoryDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 库存逻辑地点仓库设置-->
+ <managed-bean>
+  <managed-bean-name>logicaddrwhMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.LogicaddrwhMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>logicaddrwhDao</property-name>
+   <value>#{logicaddrwhDao}</value>
+  </managed-property>
+ </managed-bean>
+  <!-- 库存逻辑地点设置 -->
+ <managed-bean>
+  <managed-bean-name>inventoryLogicAddressMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.inventoryLogicAddressMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>inventoryLogicAddressDao</property-name>
+   <value>#{inventoryLogicAddressDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 线路档案 -->
+ <managed-bean>
+  <managed-bean-name>lineMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.LineMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>lineDao</property-name>
+   <value>#{lineDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物料默认库位 -->
+ <managed-bean>
+  <managed-bean-name>inwhMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.InwhMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>inwhDao</property-name>
+   <value>#{inwhDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 部门档案 -->
+ <managed-bean>
+  <managed-bean-name>deptMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.DeptMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>deptDao</property-name>
+   <value>#{deptDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物流商档案 -->
+ <managed-bean>
+  <managed-bean-name>carrierMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.CarrierMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>carrierDao</property-name>
+   <value>#{carrierDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 快递单号档案 -->
+ <managed-bean>
+  <managed-bean-name>expressMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.ExpressMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>expressDao</property-name>
+   <value>#{expressDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 颜色 -->
+ <managed-bean>
+  <managed-bean-name>colorMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.ColorMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>colorDao</property-name>
+   <value>#{colorDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 尺码 -->
+ <managed-bean>
+  <managed-bean-name>sizeMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.SizeMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>sizeDao</property-name>
+   <value>#{sizeDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 款式 -->
+ <managed-bean>
+  <managed-bean-name>patClassMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.PatClassMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>patClassBiz</property-name>
+   <value>#{patClassBiz}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 工艺信息 -->
+ <managed-bean>
+  <managed-bean-name>crinMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.CrinMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>crinDao</property-name>
+   <value>#{crinDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 产品部位 -->
+ <managed-bean>
+  <managed-bean-name>dvptMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.DvptMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>dvptDao</property-name>
+   <value>#{dvptDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 色卡档案 -->
+ <managed-bean>
+  <managed-bean-name>ccfiMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.CcfiMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>ccfiDao</property-name>
+   <value>#{ccfiDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 供应商色号 -->
+ <managed-bean>
+  <managed-bean-name>riciMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.RiciMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>riciDao</property-name>
+   <value>#{riciDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 合格证档案 -->
+ <managed-bean>
+  <managed-bean-name>cefoMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.CefoMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>cefoDao</property-name>
+   <value>#{cefoDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物料成分-->
+ <managed-bean>
+  <managed-bean-name>compMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.CompMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>compDao</property-name>
+   <value>#{compDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 品牌档案 -->
+ <managed-bean>
+  <managed-bean-name>insyMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.InsyMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>insyDao</property-name>
+   <value>#{insyDao}</value>
+  </managed-property>
+ </managed-bean>
+ <!-- 物流商大头字档案 -->
+ <managed-bean>
+  <managed-bean-name>lprdMB</managed-bean-name>
+  <managed-bean-class>com.gwall.view.base.LprdMB</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>lprdDao</property-name>
+   <value>#{lprdDao}</value>
+  </managed-property>
+ </managed-bean>
+</faces-config>

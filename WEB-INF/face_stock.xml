@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- 调拨计划 -->
+	<managed-bean>
+		<managed-bean-name>tranPlanMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.TranPlanMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>tranPlanBiz</property-name>
+			<value>#{tranPlanBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+  <!-- 货主转换计划ly -->
+	<managed-bean>
+		<managed-bean-name>owTranMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.OwTranMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>owtranBiz</property-name>
+			<value>#{owtranBiz}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 调拨入库 -->
+	<managed-bean>
+		<managed-bean-name>traninMB</managed-bean-name>
+		<managed-bean-class>com.gwall.view.TraninMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>traninbiz</property-name>
+			<value>#{traninbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 调拨出库 -->
+	<managed-bean>
+		<managed-bean-name>tranOutMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.TranOutMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>tranOutBiz</property-name>
+			<value>#{tranOutBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 盘点计划单 -->
+	<managed-bean>
+		<managed-bean-name>stockPlanMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockPlanMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>stockPlanbiz</property-name>
+			<value>#{stockPlanbiz}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 盘点操作单 -->
+	<managed-bean>
+		<managed-bean-name>stockOptMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockOptMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>stockOptbiz</property-name>
+			<value>#{stockOptbiz}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 盘盈盘亏记录 -->
+	<managed-bean>
+		<managed-bean-name>stockadjustMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.StockAdjustMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>stockAdjustbiz</property-name>
+			<value>#{stockAdjustbiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 移库 -->
+	<managed-bean>
+		<managed-bean-name>shiftLibraryMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.ShiftLibraryMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>shiftlibraryBiz</property-name>
+			<value>#{shiftlibraryBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 异常库存 -->
+	<managed-bean>
+		<managed-bean-name>abnormalstockMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.AbnormalStockMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>abnormalstockBiz</property-name>
+			<value>#{abnormalstockBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 装箱界面 -->
+	<managed-bean>
+		<managed-bean-name>packBoxMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PackBoxMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>packBoxBiz</property-name>
+			<value>#{packBoxBiz}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- 初始化生成装箱使用的箱子码 和没有条码的物料条码 -->
+	<managed-bean>
+		<managed-bean-name>printPackboxMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PrintPackBoxMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>printPackboxBiz</property-name>
+			<value>#{printPackboxBiz}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>printBarMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.PrintBarMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 上架任务 -->
+	<managed-bean>
+		<managed-bean-name>shelvestaskMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.stock.ShelvesTaskMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>shelvesTaskBiz</property-name>
+			<value>#{shelvesTaskBiz}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- 取消上架 -->
+	<managed-bean>
+		<managed-bean-name>cancelBackMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.stock.CancelBackMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- 追件处理  -->
+	<managed-bean>
+		<managed-bean-name>afterSignleMB</managed-bean-name>
+		<managed-bean-class>
+			com.gwall.view.stock.AfterSingleMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+</faces-config>
+

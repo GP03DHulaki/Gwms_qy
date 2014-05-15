@@ -1,0 +1,80 @@
+div.root{
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+div.box{
+	margin-top: 2px;
+}
+
+div.box_detail{
+	margin-left: 18px;
+	margin-top: 2px;
+}
+
+div.box_op{
+	margin-left: 30px;
+	margin-top: 0px;
+}
+
+
+table.operatelist{
+	margin-left: 33px;
+	margin-top: 2px;
+	background-color: #67ABE5;
+	border:0;
+}
+
+td.operatesel{
+	width:70px;
+	background-color: #FFFFCC;
+}
+
+td.operateunsel{
+	width:70px;
+	background-color: #C4C4A0;
+}
+
+span.operatelist{
+	background-color: #67ABE5;
+	border:0;
+}
+
+span.operatesel{
+	width:70px;
+	background-color: #DEE8F4;
+}
+
+span.operateunsel{
+	width:70px;
+	background-color: #DEE8F4;
+}
+
+span.folderMark {
+    font-family:"宋体";
+    cursor:pointer;
+    margin-right:5px;
+}
+
+span.folder {
+    cursor:pointer;
+}
+
+span.itemMark {
+	cursor:pointer;
+    font-family:"宋体";
+    margin-right:5px;
+}
+
+span.item {
+	cursor:pointer;
+}
+
+span.item_Active{
+	cursor:pointer;
+	background-color: #FFFFCC;
+}
+
+span.item_Click {
+	cursor:pointer;
+}
