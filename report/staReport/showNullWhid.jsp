@@ -35,12 +35,14 @@
 							<a4j:commandButton value="重置"
 								onmouseover="this.className='a4j_over'"
 								onmouseout="this.className='a4j_buton'" styleClass="a4j_but"
-								onclick="textClear('list','sps,ewid,whna,orid');" />							
+								onclick="textClear('list','sps,ewid,whna,orid');" />		
+							<a4j:commandButton onmouseover="this.className='a4j_over1'"
+							onmouseout="this.className='a4j_buton1'" styleClass="a4j_but1"
+							id="excel" value="导出EXCEL" type="button"
+							action="#{warehouseMB.reportExcel}"
+							reRender="msg,outPutFileName" onclick="excelios_beginss('gtable');"
+							oncomplete="excelios_endss();" requestDelay="50" />						
 						</h:panelGroup>
-						<a4j:outputPanel id="queryButs">
-							<gw:GAjaxButton id="otpDBut" value="导出EXCEL" theme="b_theme"
-									onclick="reportExcel('gtable')" type="button" />
-						</a4j:outputPanel>		
 					</div>
 					<div id=mmain_cnd>
 						<h:panelGroup id="sps" rendered="#{warehouseMB.LST}">
@@ -82,7 +84,14 @@
 								gcid = addr(headtext = 地址,name = addr,width = 120,headtype = sort,align = left,type = text);								
 							" />
 					</a4j:outputPanel>
-					<h:inputHidden id="sellist" value="#{warehouseMB.sellist}"></h:inputHidden>
+					
+					<a4j:outputPanel id="renderArea">
+							<h:inputHidden id="msg" value="#{warehouseMB.msg}" />
+							<h:inputHidden id="ssql" value="#{warehouseMB.ssql}" />
+							<h:inputHidden id="sellist" value="#{warehouseMB.sellist}"></h:inputHidden>
+							<h:inputHidden id="outPutFileName"
+								value="#{warehouseMB.outPutFileName}" />
+						</a4j:outputPanel>
 				</h:form>
 			</f:view>
 		</div>

@@ -61,7 +61,7 @@ function create_auto_excel_form()
 {
 	var form = document.createElement('FORM');
 	form.target = '_blank';
-	form.action = '/Gwms_new/common/common_excel/common_excel.jsf';
+	form.action = '/Gwms_qy/common/common_excel/common_excel.jsf';
 	form.id = 'auto_lord_excel';
 	form.method = 'post';
 	form.name = 'form_excel';

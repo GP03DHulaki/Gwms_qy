@@ -70,6 +70,25 @@ function formsubmit(){
 		startDo();
 	}
 	
+//导出开始
+	function excelios_beginss(obj){
+		var s = Gtable.getSQL(obj);
+		$("list:ssql").value = s
+		
+		startDo();
+	}
+	//导出结束
+	function excelios_endss(){
+		Gwallwin.winShowmask('FALSE');
+		var message =$('list:msg').value;
+		
+		alert($('list:msg').value);
+		//alert($("edit:outPutFileName").value);
+		if(message.indexOf('导出成功')!=-1){
+			window.open('../../'+$("edit:outPutFileName").value);
+		}
+  	}
+	
 	
 //导出结束
 	function excelios_end(){
