@@ -129,8 +129,6 @@
 											LEFT JOIN waho b ON a.pfwh = b.whid
 											LEFT JOIN waho c on a.powh = c.whid
 											join orga d on d.orid=a.orid
-											join ppde e on e.biid=a.biid
-											join inve f on e.inco=f.inco
 											WHERE a.#{tranPlanMB.gorgaSql} #{tranPlanMB.searchSQL}"
 										gpage="(pagesize = 18)"
 										gcolumn="gcid = id(headtext = selall,name = selall,width = 20,headtype = checkbox,align = center,type = checkbox,datatype=string);

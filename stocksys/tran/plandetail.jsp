@@ -83,13 +83,12 @@
 						<tr>
 							<td valign="top" id="td_outdetail">
 								<a4j:outputPanel id="outdetail">
-									<g:GTable gid="gtable" gtype="grid" gversion="2" gdebug="false"
-										gselectsql="
+									<g:GTable gid="gtable" gtype="grid" gversion="2" gdebug="true"
+									gselectsql="
 											Select a.roid,a.did,a.inco,a.qty,isnull(a.pric,0) as pric,a.oqty,a.iqty,a.gqty,
 											b.inna,b.inse,b.colo,a.tqty
 											From ppde a left join inve b On a.inco = b.inco  
-											Where a.biid = '#{tranPlanMB.mbean.biid}'
-										"
+											Where a.biid = '#{tranPlanMB.mbean.biid}'"
 										gpage="(pagesize = -1)"
 										gupdate="(table = {ppde},tablepk = {did})"
 										gcolumn="gcid = did(headtext = selall,name = did,width = 35,align = center,type = checkbox ,headtype = #{tranPlanMB.commitStatus ? 'checkbox' : 'hidden'});
@@ -100,11 +99,10 @@
 										gcid = colo(headtext = 规格,name = colo,width = 70,align = left,type = text,headtype = sort ,datatype = string);
 										gcid = inse(headtext = 规格码,name = inse,width = 70,align = left,type = text,headtype = sort ,datatype = string);
 										gcid = qty(headtext =  计划数量,name = qty,width = 65,align = right,type = #{tranPlanMB.commitStatus ? 'input' : 'text' },headtype= sort, datatype =number,dataformat=0.##,update=edit,summary=this,gscript={onkeypress=return isInteger(event)&&onchange=textChange(this)&&onkeydown=keyhandleupdown(this)});
-										gcid = tqty(headtext = 已锁定数,name = tqty,width = 65,align = right,type = text,headtype = sort ,datatype = number,dataformat=0,dataformat=0.##,summary=this,bgcolor={gcolumn[qty]<gcolumn[tqty]:#FFD6CC/gcolumn[qty]=gcolumn[tqty]:#AAFFBB/gcolumn[tqty]=0:#FFFFFF/gcolumn[qty]>gcolumn[tqty]:#F9F9B0});
 										gcid = oqty(headtext = 已出库数,name = oqty,width = 65,align = right,type = text,headtype = sort ,datatype = number,dataformat=0);
 										gcid = iqty(headtext = 已入库数,name = iqty,width = 65,align = right,type = text,headtype = sort ,datatype = number,dataformat=0);
 										gcid = gqty(headtext = 已备数量,name = gqty,width = 65,align = right,type = text,headtype= sort, datatype =number,dataformat=0.##,bgcolor={gcolumn[qty]>gcolumn[gqty]:#FFFF00},summary=this);
-										" />
+										"/>
 								</a4j:outputPanel>
 							</td>
 							<td valign="top" >
